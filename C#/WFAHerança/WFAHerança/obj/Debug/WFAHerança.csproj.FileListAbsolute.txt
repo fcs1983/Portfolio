@@ -1,0 +1,9 @@
+E:\C#\Projetos\WFAHerança\WFAHerança\bin\Debug\WFAHerança.exe.config
+E:\C#\Projetos\WFAHerança\WFAHerança\bin\Debug\WFAHerança.exe
+E:\C#\Projetos\WFAHerança\WFAHerança\bin\Debug\WFAHerança.pdb
+E:\C#\Projetos\WFAHerança\WFAHerança\obj\Debug\WFAHerança.csprojResolveAssemblyReference.cache
+E:\C#\Projetos\WFAHerança\WFAHerança\obj\Debug\WFAHerança.Form1.resources
+E:\C#\Projetos\WFAHerança\WFAHerança\obj\Debug\WFAHerança.Properties.Resources.resources
+E:\C#\Projetos\WFAHerança\WFAHerança\obj\Debug\WFAHerança.csproj.GenerateResource.Cache
+E:\C#\Projetos\WFAHerança\WFAHerança\obj\Debug\WFAHerança.exe
+E:\C#\Projetos\WFAHerança\WFAHerança\obj\Debug\WFAHerança.pdb

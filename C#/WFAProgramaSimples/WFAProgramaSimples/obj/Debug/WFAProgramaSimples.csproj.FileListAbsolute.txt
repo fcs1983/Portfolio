@@ -1,0 +1,9 @@
+H:\C#\Projetos\WFAProgramaSimples\WFAProgramaSimples\bin\Debug\WFAProgramaSimples.exe.config
+H:\C#\Projetos\WFAProgramaSimples\WFAProgramaSimples\bin\Debug\WFAProgramaSimples.exe
+H:\C#\Projetos\WFAProgramaSimples\WFAProgramaSimples\bin\Debug\WFAProgramaSimples.pdb
+H:\C#\Projetos\WFAProgramaSimples\WFAProgramaSimples\obj\Debug\WFAProgramaSimples.csprojResolveAssemblyReference.cache
+H:\C#\Projetos\WFAProgramaSimples\WFAProgramaSimples\obj\Debug\WFAProgramaSimples.Form1.resources
+H:\C#\Projetos\WFAProgramaSimples\WFAProgramaSimples\obj\Debug\WFAProgramaSimples.Properties.Resources.resources
+H:\C#\Projetos\WFAProgramaSimples\WFAProgramaSimples\obj\Debug\WFAProgramaSimples.csproj.GenerateResource.Cache
+H:\C#\Projetos\WFAProgramaSimples\WFAProgramaSimples\obj\Debug\WFAProgramaSimples.exe
+H:\C#\Projetos\WFAProgramaSimples\WFAProgramaSimples\obj\Debug\WFAProgramaSimples.pdb
