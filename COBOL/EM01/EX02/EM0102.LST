@@ -1,0 +1,134 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 08-Sep-15 16:31 Page   1
+*                                      EM0102.CBL
+* Options: LIST(EM0102.LST) ASMLIST(EM0102.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.      EM0102.
+     3 AUTHOR.          FABIO EDUARDO LEONARDO.
+     4 INSTALLATION.    FATEC-SP.
+     5 DATE-WRITTEN.    30/08/2015.
+     6 DATE-COMPILED. 08-Sep-15 16:31.
+     7 SECURITY.        MODIFICACAO SOMENTE COM AUTORIZACAO.
+     8*REMARKS.         LER OS REGISTROS EM CADALU E GRAVAR EM
+     9*                 CADATU CONFORME LAYOUT.
+    10
+    11 ENVIRONMENT DIVISION.
+    12
+    13 CONFIGURATION SECTION.
+    14     SOURCE-COMPUTER.  IBM-PC.
+    15     OBJECT-COMPUTER.  IBM-PC.
+    16     SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    17
+    18 INPUT-OUTPUT SECTION.
+    19 FILE-CONTROL.
+    20
+    21     SELECT CADALU ASSIGN TO DISK
+    22     ORGANIZATION IS LINE SEQUENTIAL.
+    23
+    24     SELECT CADATU ASSIGN TO DISK
+    25     ORGANIZATION IS LINE SEQUENTIAL.
+    26
+    27 DATA DIVISION.
+    28 FILE SECTION.
+    29
+    30 FD CADALU
+    31     LABEL RECORD ARE STANDARD
+    32     VALUE OF FILE-ID IS "CADALU.DAT".
+    33
+    34 01 REG-ENT.
+    35     02 NUM-ENT        PIC 9(05).
+    36     02 NOME-ENT       PIC X(20).
+    37     02 SEXO-ENT       PIC X(01).
+    38     02 NASCI-ENT.
+    39         03 DD-ENT     PIC 9(02).
+    40         03 MM-ENT     PIC 9(02).
+    41         03 AA-ENT     PIC 9(04).
+    42
+    43 FD CADATU
+    44     LABEL RECORD ARE STANDARD
+    45     VALUE OF FILE-ID IS "CADATU.DAT".
+    46
+    47 01 REG-SAI.
+    48     02 NUM-SAI        PIC 9(05).
+    49     02 NOME-SAI       PIC X(20).
+    50     02 NASCI-SAI.
+    51         03 DD-SAI     PIC 9(02).
+    52         03 MM-SAI     PIC 9(02).
+    53         03 AA-SAI     PIC 9(04).
+    54
+    55 WORKING-STORAGE SECTION.
+    56
+    57 77 FIM-ARQ            PIC X(03) VALUE "NAO".
+* Microsoft COBOL Version 4.5        L2.4 revision 002 08-Sep-15 16:31 Page   2
+*                                      EM0102.CBL
+    58
+    59 PROCEDURE DIVISION.
+    60
+    61 EM01-02.
+    62
+    63     PERFORM INICIO.
+    64
+    65     PERFORM PRINCIPAL
+    66             UNTIL FIM-ARQ EQUAL "SIM".
+    67
+    68         PERFORM TERMINO.
+    69
+    70     STOP RUN.
+    71
+    72 INICIO.
+    73
+    74     OPEN INPUT   CADALU
+    75         OUTPUT  CADATU.
+    76     PERFORM LEITURA.
+    77
+    78 LEITURA.
+    79
+    80     READ CADALU AT END
+    81         MOVE "SIM" TO FIM-ARQ.
+    82
+    83 PRINCIPAL.
+    84
+    85     PERFORM GRAVACAO.
+    86     PERFORM LEITURA.
+    87
+    88 GRAVACAO.
+    89
+    90     MOVE NUM-ENT TO NUM-SAI.
+    91     MOVE NOME-ENT TO NOME-SAI.
+    92     MOVE DD-ENT TO DD-SAI.
+    93     MOVE MM-ENT TO MM-SAI.
+    94     MOVE AA-ENT TO AA-SAI.
+    95     WRITE REG-SAI.
+    96
+    97 TERMINO.
+    98
+    99     CLOSE CADALU
+   100           CADATU.
+   101
+   102
+   103
+   104
+   105
+   106
+   107
+   108
+   109
+   110
+   111
+   112
+   113
+   114
+   115
+* Microsoft COBOL Version 4.5        L2.4 revision 002 08-Sep-15 16:31 Page   3
+*                                      EM0102.CBL
+   116
+   117
+   118
+   119
+   120
+   121
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1032     Code:         334     Dictionary:        1274

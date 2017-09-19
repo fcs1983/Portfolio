@@ -1,0 +1,120 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 08-Sep-15 16:32 Page   1
+*                                      EM0103.CBL
+* Options: LIST(EM0103.LST) ASMLIST(EM0103.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.      EM0103.
+     3 AUTHOR.          FABIO EDUARDO LEONARDO.
+     4 INSTALLATION.    FATEC-SP.
+     5 DATE-WRITTEN.    30/08/2015.
+     6 DATE-COMPILED. 08-Sep-15 16:32.
+     7 SECURITY.        MODIFICACAO SOMENTE COM AUTORIZACAO.
+     8*REMARKS.         LER OS REGISTROS DE CADALU, CALCULAR A MEDIA E
+     9*                 GRAVAR EM CADATU CONFORM LAYOUT.
+    10
+    11 ENVIRONMENT DIVISION.
+    12
+    13 CONFIGURATION SECTION.
+    14     SOURCE-COMPUTER.  IBM-PC.
+    15     OBJECT-COMPUTER.  IBM-PC.
+    16     SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    17
+    18 INPUT-OUTPUT SECTION.
+    19 FILE-CONTROL.
+    20
+    21     SELECT CADALU ASSIGN TO DISK
+    22     ORGANIZATION IS LINE SEQUENTIAL.
+    23
+    24     SELECT CADATU ASSIGN TO DISK
+    25     ORGANIZATION IS LINE SEQUENTIAL.
+    26
+    27 DATA DIVISION.
+    28 FILE SECTION.
+    29
+    30 FD CADALU
+    31     LABEL RECORD ARE STANDARD
+    32     VALUE OF FILE-ID IS "CADALU.DAT".
+    33
+    34 01 REG-ENT.
+    35     02 NUM-ENT        PIC 9(05).
+    36     02 NOME           PIC X(20).
+    37     02 NOTA1          PIC 99V99.
+    38     02 NOTA2          PIC 99V99.
+    39     02 NOTA3          PIC 99V99.
+    40
+    41 FD CADATU
+    42     LABEL RECORD ARE STANDARD
+    43     VALUE OF FILE-ID IS "CADATU.DAT".
+    44
+    45 01 REG-SAI.
+    46     02 NUM-SAI        PIC 9(05).
+    47     02 MEDIA          PIC 99V99.
+    48
+    49 WORKING-STORAGE SECTION.
+    50
+    51 77 FIM-ARQ            PIC X(03) VALUE "NAO".
+    52 77 SOMA               PIC 9(02) VALUE ZEROS.
+    53
+    54 PROCEDURE DIVISION.
+    55
+    56 EM01-03.
+    57
+* Microsoft COBOL Version 4.5        L2.4 revision 002 08-Sep-15 16:32 Page   2
+*                                      EM0103.CBL
+    58     PERFORM INICIO.
+    59
+    60     PERFORM PRINCIPAL
+    61             UNTIL FIM-ARQ EQUAL "SIM".
+    62
+    63         PERFORM TERMINO.
+    64
+    65     STOP RUN.
+    66
+    67 INICIO.
+    68
+    69     OPEN INPUT  CADALU
+    70          OUTPUT CADATU.
+    71     PERFORM LEITURA.
+    72
+    73 LEITURA.
+    74
+    75     READ CADALU AT END
+    76         MOVE "SIM" TO FIM-ARQ.
+    77
+    78 PRINCIPAL.
+    79
+    80     PERFORM GRAVACAO.
+    81     PERFORM LEITURA.
+    82
+    83 GRAVACAO.
+    84
+    85     MOVE NUM-ENT TO NUM-SAI.
+    86     ADD NOTA1 NOTA2 NOTA3 GIVING SOMA.
+    87     DIVIDE SOMA BY 3 GIVING MEDIA.
+    88     WRITE REG-SAI.
+    89
+    90 TERMINO.
+    91
+    92     CLOSE CADALU
+    93           CADATU.
+    94
+    95
+    96
+    97
+    98
+    99
+   100
+   101
+   102
+   103
+   104
+   105
+   106
+   107
+   108
+   109
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1024     Code:         339     Dictionary:        1144

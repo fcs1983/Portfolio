@@ -1,0 +1,114 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 08-Sep-15 16:33 Page   1
+*                                      EM0104.CBL
+* Options: LIST(EM0104.LST) ASMLIST(EM0104.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.      EM0104.
+     3 AUTHOR.          FABIO EDUARDO LEONARDO.
+     4 INSTALLATION.    FATEC-SP.
+     5 DATE-WRITTEN.    02/09/2015.
+     6 DATE-COMPILED. 08-Sep-15 16:33.
+     7 SECURITY.        MODIFICACAO SOMENTE COM AUTORIZACAO.
+     8*REMARKS.         LER OS REGISTROS DE CADCLI1 E GRAVAR EM
+     9*                 CADCLI2 SOMENTE OS REGISTROS DO SEXO
+    10*                 MASCULINO.
+    11
+    12 ENVIRONMENT DIVISION.
+    13
+    14 CONFIGURATION SECTION.
+    15     SOURCE-COMPUTER.  IBM-PC.
+    16     OBJECT-COMPUTER.  IBM-PC.
+    17     SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    18
+    19 INPUT-OUTPUT SECTION.
+    20 FILE-CONTROL.
+    21
+    22     SELECT CADCLI1 ASSIGN TO DISK
+    23     ORGANIZATION IS LINE SEQUENTIAL.
+    24
+    25     SELECT CADCLI2 ASSIGN TO DISK
+    26     ORGANIZATION IS LINE SEQUENTIAL.
+    27
+    28 DATA DIVISION.
+    29 FILE SECTION.
+    30
+    31 FD CADCLI1
+    32     LABEL RECORD ARE STANDARD
+    33     VALUE OF FILE-ID IS "CADCLI1.DAT".
+    34
+    35 01 REG-ENT.
+    36     02 COD-ENT   PIC 9(05).
+    37     02 NOME-ENT  PIC X(20).
+    38     02 SEXO      PIC X(01).
+    39
+    40 FD CADCLI2
+    41     LABEL RECORD ARE STANDARD
+    42     VALUE OF FILE-ID IS "CADCLI2.DAT".
+    43
+    44 01 REG-SAI.
+    45     02 COD-SAI   PIC 9(05).
+    46     02 NOME-SAI  PIC X(20).
+    47
+    48 WORKING-STORAGE SECTION.
+    49
+    50 77 FIM-ARQ       PIC X(03) VALUE "NAO".
+    51
+    52 PROCEDURE DIVISION.
+    53
+    54 EM01-04.
+    55
+    56     PERFORM INICIO.
+    57
+* Microsoft COBOL Version 4.5        L2.4 revision 002 08-Sep-15 16:33 Page   2
+*                                      EM0104.CBL
+    58     PERFORM PRINCIPAL
+    59             UNTIL FIM-ARQ EQUAL "SIM".
+    60
+    61         PERFORM TERMINO.
+    62
+    63     STOP RUN.
+    64
+    65 INICIO.
+    66
+    67     OPEN INPUT   CADCLI1
+    68          OUTPUT  CADCLI2.
+    69     PERFORM LEITURA.
+    70
+    71 LEITURA.
+    72
+    73     READ CADCLI1 AT END
+    74         MOVE "SIM" TO FIM-ARQ.
+    75
+    76 PRINCIPAL.
+    77
+    78     PERFORM GRAVACAO.
+    79     PERFORM LEITURA.
+    80
+    81 GRAVACAO.
+    82
+    83     IF SEXO EQUAL "M"
+    84         MOVE COD-ENT TO COD-SAI
+    85         MOVE NOME-ENT TO NOME-SAI
+    86         WRITE REG-SAI.
+    87
+    88 TERMINO.
+    89
+    90     CLOSE CADCLI1
+    91           CADCLI2.
+    92
+    93
+    94
+    95
+    96
+    97
+    98
+    99
+   100
+   101
+   102
+   103
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1016     Code:         319     Dictionary:        1038

@@ -1,0 +1,106 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 08-Sep-15 16:36 Page   1
+*                                      EM0106.CBL
+* Options: LIST(EM0106.LST) ASMLIST(EM0106.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.      EM0106.
+     3 AUTHOR.          FABIO EDUARDO LEONARDO.
+     4 INSTALLATION.    FATEC-SP.
+     5 DATE-WRITTEN.    02/09/2015.
+     6 DATE-COMPILED. 08-Sep-15 16:36.
+     7 SECURITY.        MODIFICACAO SOMENTE COM AUTORIZACAO.
+     8*REMARKS.         LER OS REGISTROS DE CADENT E GRAVAR EM CADSAI
+     9*                 OS REGISTROS QUE TIVEREM SALARIO BRUTO MAIOR
+    10*                 QUE R$3.000,00.
+    11
+    12 ENVIRONMENT DIVISION.
+    13
+    14 CONFIGURATION SECTION.
+    15     SOURCE-COMPUTER.  IBM-PC.
+    16     OBJECT-COMPUTER.  IBM-PC.
+    17     SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    18
+    19 INPUT-OUTPUT SECTION.
+    20 FILE-CONTROL.
+    21
+    22     SELECT CADENT ASSIGN TO DISK
+    23     ORGANIZATION IS LINE SEQUENTIAL.
+    24
+    25     SELECT CADSAI ASSIGN TO DISK
+    26     ORGANIZATION IS LINE SEQUENTIAL.
+    27
+    28 DATA DIVISION.
+    29 FILE SECTION.
+    30
+    31 FD CADENT
+    32     LABEL RECORD ARE STANDARD
+    33     VALUE OF FILE-ID IS "CADENT.DAT".
+    34
+    35 01 REG-ENT.
+    36     02 MAT-ENT   PIC 9(05).
+    37     02 NOME-ENT  PIC X(30).
+    38     02 SAL-ENT   PIC 9(05)V99.
+    39
+    40 FD CADSAI
+    41     LABEL RECORD ARE STANDARD
+    42     VALUE OF FILE-ID IS "CADSAI.DAT".
+    43
+    44 01 REG-SAI.
+    45     02 MAT-SAI   PIC 9(05).
+    46     02 NOME-SAI  PIC X(30).
+    47     02 SAL-SAI   PIC 9(05)V99.
+    48
+    49 WORKING-STORAGE SECTION.
+    50
+    51 77 FIM-ARQ       PIC X(03) VALUE  "NAO".
+    52
+    53 PROCEDURE DIVISION.
+    54
+    55 EM01-05.
+    56
+    57     PERFORM INICIO.
+* Microsoft COBOL Version 4.5        L2.4 revision 002 08-Sep-15 16:36 Page   2
+*                                      EM0106.CBL
+    58
+    59     PERFORM PRINCIPAL
+    60             UNTIL FIM-ARQ EQUAL "SIM".
+    61
+    62     PERFORM TERMINO.
+    63
+    64     STOP RUN.
+    65
+    66 INICIO.
+    67
+    68     OPEN INPUT CADENT
+    69         OUTPUT CADSAI.
+    70     PERFORM LEITURA.
+    71
+    72 LEITURA.
+    73
+    74     READ CADENT AT END
+    75         MOVE "SIM" TO FIM-ARQ.
+    76
+    77 PRINCIPAL.
+    78
+    79     PERFORM GRAVACAO.
+    80     PERFORM LEITURA.
+    81
+    82 GRAVACAO.
+    83
+    84     IF SAL-ENT IS GREATER THAN 3000
+    85         MOVE MAT-ENT TO MAT-SAI
+    86         MOVE NOME-ENT TO NOME-SAI
+    87         MOVE SAL-ENT TO SAL-SAI
+    88         WRITE REG-SAI.
+    89
+    90 TERMINO.
+    91
+    92     CLOSE CADENT
+    93           CADSAI.
+    94
+    95
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1048     Code:         334     Dictionary:        1071
