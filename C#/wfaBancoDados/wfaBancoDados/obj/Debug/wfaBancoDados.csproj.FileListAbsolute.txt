@@ -1,0 +1,12 @@
+E:\C#\Projetos\wfaBancoDados\wfaBancoDados\bin\Debug\wfaBancoDados.exe.config
+E:\C#\Projetos\wfaBancoDados\wfaBancoDados\bin\Debug\wfaBancoDados.exe
+E:\C#\Projetos\wfaBancoDados\wfaBancoDados\bin\Debug\wfaBancoDados.pdb
+E:\C#\Projetos\wfaBancoDados\wfaBancoDados\obj\Debug\wfaBancoDados.csprojResolveAssemblyReference.cache
+E:\C#\Projetos\wfaBancoDados\wfaBancoDados\obj\Debug\wfaBancoDados.frmPrincipal.resources
+E:\C#\Projetos\wfaBancoDados\wfaBancoDados\obj\Debug\wfaBancoDados.frmAlunos.resources
+E:\C#\Projetos\wfaBancoDados\wfaBancoDados\obj\Debug\wfaBancoDados.Properties.Resources.resources
+E:\C#\Projetos\wfaBancoDados\wfaBancoDados\obj\Debug\wfaBancoDados.csproj.GenerateResource.Cache
+E:\C#\Projetos\wfaBancoDados\wfaBancoDados\obj\Debug\wfaBancoDados.exe
+E:\C#\Projetos\wfaBancoDados\wfaBancoDados\obj\Debug\wfaBancoDados.pdb
+E:\C#\Projetos\wfaBancoDados\wfaBancoDados\obj\Debug\wfaBancoDados.frmDepto.resources
+E:\C#\Projetos\wfaBancoDados\wfaBancoDados\obj\Debug\wfaBancoDados.frmCursos.resources
