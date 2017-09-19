@@ -1,0 +1,9 @@
+H:\C#\Projetos\WFAEditor\WFAEditor\bin\Debug\WFAEditor.exe.config
+H:\C#\Projetos\WFAEditor\WFAEditor\bin\Debug\WFAEditor.exe
+H:\C#\Projetos\WFAEditor\WFAEditor\bin\Debug\WFAEditor.pdb
+H:\C#\Projetos\WFAEditor\WFAEditor\obj\Debug\WFAEditor.csprojResolveAssemblyReference.cache
+H:\C#\Projetos\WFAEditor\WFAEditor\obj\Debug\WFAEditor.Form1.resources
+H:\C#\Projetos\WFAEditor\WFAEditor\obj\Debug\WFAEditor.Properties.Resources.resources
+H:\C#\Projetos\WFAEditor\WFAEditor\obj\Debug\WFAEditor.csproj.GenerateResource.Cache
+H:\C#\Projetos\WFAEditor\WFAEditor\obj\Debug\WFAEditor.exe
+H:\C#\Projetos\WFAEditor\WFAEditor\obj\Debug\WFAEditor.pdb

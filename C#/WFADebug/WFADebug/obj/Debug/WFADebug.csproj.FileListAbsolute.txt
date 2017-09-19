@@ -1,0 +1,9 @@
+H:\C#\Projetos\WFADebug\WFADebug\bin\Debug\WFADebug.exe.config
+H:\C#\Projetos\WFADebug\WFADebug\bin\Debug\WFADebug.exe
+H:\C#\Projetos\WFADebug\WFADebug\bin\Debug\WFADebug.pdb
+H:\C#\Projetos\WFADebug\WFADebug\obj\Debug\WFADebug.csprojResolveAssemblyReference.cache
+H:\C#\Projetos\WFADebug\WFADebug\obj\Debug\WFADebug.Form1.resources
+H:\C#\Projetos\WFADebug\WFADebug\obj\Debug\WFADebug.Properties.Resources.resources
+H:\C#\Projetos\WFADebug\WFADebug\obj\Debug\WFADebug.csproj.GenerateResource.Cache
+H:\C#\Projetos\WFADebug\WFADebug\obj\Debug\WFADebug.exe
+H:\C#\Projetos\WFADebug\WFADebug\obj\Debug\WFADebug.pdb
