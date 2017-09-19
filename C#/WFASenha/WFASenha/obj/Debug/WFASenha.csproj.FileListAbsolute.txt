@@ -1,0 +1,10 @@
+H:\C#\Projetos\WFASenha\WFASenha\bin\Debug\WFASenha.exe.config
+H:\C#\Projetos\WFASenha\WFASenha\bin\Debug\WFASenha.exe
+H:\C#\Projetos\WFASenha\WFASenha\bin\Debug\WFASenha.pdb
+H:\C#\Projetos\WFASenha\WFASenha\obj\Debug\WFASenha.csprojResolveAssemblyReference.cache
+H:\C#\Projetos\WFASenha\WFASenha\obj\Debug\WFASenha.Form1.resources
+H:\C#\Projetos\WFASenha\WFASenha\obj\Debug\WFASenha.Form2.resources
+H:\C#\Projetos\WFASenha\WFASenha\obj\Debug\WFASenha.Properties.Resources.resources
+H:\C#\Projetos\WFASenha\WFASenha\obj\Debug\WFASenha.csproj.GenerateResource.Cache
+H:\C#\Projetos\WFASenha\WFASenha\obj\Debug\WFASenha.exe
+H:\C#\Projetos\WFASenha\WFASenha\obj\Debug\WFASenha.pdb
