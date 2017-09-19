@@ -1,0 +1,48 @@
+-- ----------------------------------------------------------------------------------------
+-- Gabriel Issa Shammas (FCS) - 01 de janeiro de 2000 a 31 de dezembro de 2014
+-- ----------------------------------------------------------------------------------------
+-- Doc- QUERY025- dbo.FCS_TB02S002_SUB_CONTINENTE
+--
+-- Selecionar todos os subcontinentes da tabela  dbo.FCS_TB02S002_SUB_CONTINENTE,  explici-
+-- tando as colunas no comando e colocando label nestas colunas,  para que o usuário  possa
+-- melhor entender o relatório gerado.
+-- Atenção: Exibir apenas os subcontinentes com área menor  do que a área média dos subcon-
+--          tinentes
+--          Ordenar a saída pelo nome do subcontinente, em ordem crescente.
+--
+-- ----------------------------------------------------------------------------------------
+-- Atenção. Indicação do BD a ser usado. Se for o caso, mude o nome do Banco.
+-- ----------------------------------------------------------------------------------------
+--
+USE BD_T_G01;
+--
+-- ----------------------------------------------------------------------------------------
+-- Seleção de todos os dados para visualização do conteúdo da tabela.
+-- ----------------------------------------------------------------------------------------
+--
+Select codigo          'Código do subcontinente',
+       nome            'Nome do subcontinente',
+       cod_continente  'Código do Continente',
+       ext_km2         'Área (Km quadr.)',
+       obs             'Comentário'
+  From dbo.FCS_TB02S002_SUB_CONTINENTE
+  Where ext_km2 <
+     (Select avg(ext_km2)
+        From dbo.FCS_TB02S002_SUB_CONTINENTE)
+  Order by nome asc;
+--
+-- ----------------------------------------------------------------------------------------
+-- Comentários.
+-- ----------------------------------------------------------------------------------------
+--
+-- Tupla é sinônimo de reFCStro ou linha da tabela, ou ainda, conjunto de colunas.
+--
+-- A cláusula FROM é a única cláusula obrigatória no comando SELECT.
+--
+-- A cláusula WHERE é opcional. O seu uso permite filtrar as tuplas a serem exibidas.
+--
+-- A cláusula ORDER BY é opcional.
+--
+-- ----------------------------------------------------------------------------------------
+-- Fim das Queries
+-- ----------------------------------------------------------------------------------------

@@ -1,0 +1,14 @@
+-- ----------------------------------------------------------------------------------------
+-- Gabriel Issa Shammas (GIS) - 01 de janeiro de 2000 a 31 de dezembro de 2014
+-- ----------------------------------------------------------------------------------------
+-- Doc- QUERY099- dbo.GIS_TB03S001_PAISES
+--
+-- Quais são os países cujo código esteja entre 20 e 23 (inclusive)?
+-- Atenção: Colocar o nome do continente ao lado do código do continente.
+-- Atenção: Colocar o nome do subcontinente ao lado do código do subcontinente.
+-- Atenção: Usar Join Natural (Natural Join).
+-- Atenção: Ordenar a saída pela coluna CODIGO, de modo decrescente.
+--
+-- ----------------------------------------------------------------------------------------
+-- Fim das Queries
+-- ----------------------------------------------------------------------------------------

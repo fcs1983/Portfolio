@@ -1,0 +1,15 @@
+-- ----------------------------------------------------------------------------------------
+-- Gabriel Issa Shammas (GIS) - 01 de janeiro de 2000 a 31 de dezembro de 2014
+-- ----------------------------------------------------------------------------------------
+-- Doc- QUERY092- dbo.GIS_TB03S001_PAISES
+--
+-- Selecionar todos os países com nome iniciando com a letra "B" ou com a letra "C" e com a
+-- letra "l" na 3a. posição, que faça parte da Europa.
+-- Atenção: Colocar o nome do continente ao lado do código do continente.
+-- Atenção: Colocar o nome do subcontinente ao lado do código do subcontinente.
+-- Atenção: Usar Inner Join.
+-- Atenção: Usar apenas o predicado Like.
+--
+-- ----------------------------------------------------------------------------------------
+-- Fim das Queries
+-- ----------------------------------------------------------------------------------------
