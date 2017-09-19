@@ -1,0 +1,9 @@
+G:\C#\Projetos\WFACalculaÁrea\WFACalculaÁrea\bin\Debug\WFACalculaÁrea.exe.config
+G:\C#\Projetos\WFACalculaÁrea\WFACalculaÁrea\bin\Debug\WFACalculaÁrea.exe
+G:\C#\Projetos\WFACalculaÁrea\WFACalculaÁrea\bin\Debug\WFACalculaÁrea.pdb
+G:\C#\Projetos\WFACalculaÁrea\WFACalculaÁrea\obj\Debug\WFACalculaÁrea.csprojResolveAssemblyReference.cache
+G:\C#\Projetos\WFACalculaÁrea\WFACalculaÁrea\obj\Debug\WFACalculaÁrea.Form1.resources
+G:\C#\Projetos\WFACalculaÁrea\WFACalculaÁrea\obj\Debug\WFACalculaÁrea.Properties.Resources.resources
+G:\C#\Projetos\WFACalculaÁrea\WFACalculaÁrea\obj\Debug\WFACalculaÁrea.csproj.GenerateResource.Cache
+G:\C#\Projetos\WFACalculaÁrea\WFACalculaÁrea\obj\Debug\WFACalculaÁrea.exe
+G:\C#\Projetos\WFACalculaÁrea\WFACalculaÁrea\obj\Debug\WFACalculaÁrea.pdb

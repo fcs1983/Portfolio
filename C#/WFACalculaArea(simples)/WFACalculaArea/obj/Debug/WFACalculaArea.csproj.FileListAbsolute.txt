@@ -1,0 +1,10 @@
+c:\users\xd\documents\visual studio 2015\Projects\WFACalculaArea\WFACalculaArea\bin\Debug\WFACalculaArea.exe.config
+G:\C#\Projetos\wfaCalculaArea\WFACalculaArea\bin\Debug\WFACalculaArea.exe.config
+G:\C#\Projetos\wfaCalculaArea\WFACalculaArea\bin\Debug\WFACalculaArea.exe
+G:\C#\Projetos\wfaCalculaArea\WFACalculaArea\bin\Debug\WFACalculaArea.pdb
+G:\C#\Projetos\wfaCalculaArea\WFACalculaArea\obj\Debug\WFACalculaArea.csprojResolveAssemblyReference.cache
+G:\C#\Projetos\wfaCalculaArea\WFACalculaArea\obj\Debug\WFACalculaArea.Form1.resources
+G:\C#\Projetos\wfaCalculaArea\WFACalculaArea\obj\Debug\WFACalculaArea.Properties.Resources.resources
+G:\C#\Projetos\wfaCalculaArea\WFACalculaArea\obj\Debug\WFACalculaArea.csproj.GenerateResource.Cache
+G:\C#\Projetos\wfaCalculaArea\WFACalculaArea\obj\Debug\WFACalculaArea.exe
+G:\C#\Projetos\wfaCalculaArea\WFACalculaArea\obj\Debug\WFACalculaArea.pdb
