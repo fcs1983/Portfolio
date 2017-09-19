@@ -1,0 +1,262 @@
+* Microsoft COBOL Version 5.0        L2.4 revision 003 03-Dec-15 00:06 Page   1
+*                                        EM0402.CBL
+* Options: LIST(EM0402.LST) ASMLIST(EM0402.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.    EM0402.
+     3 AUTHOR.        FABIO COSTA.
+     4 INSTALLATION.  FATEC-SP.
+     5 DATE-WRITTEN.  01/12/2015.
+     6 DATE-COMPILED. 03-Dec-15 0.
+     7 SECURITY.      NAO MODIFICAR SEM AUTORIZACAO.
+     8*REMARKS.       REALIZAR O BALANCE-LINE DOS ARQUIVOS DE ENTRADA,
+     9*               GERANDO O ARQUIVO DE SAIDA E RELATORIO.
+    10
+    11 ENVIRONMENT DIVISION.
+    12 CONFIGURATION SECTION.
+    13 SOURCE-COMPUTER.  IBM-PC.
+    14 OBJECT-COMPUTER.  IBM-PC.
+    15 SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    16
+    17 INPUT-OUTPUT SECTION.
+    18 FILE-CONTROL.
+    19     SELECT CADANT ASSIGN TO DISK
+    20     ORGANIZATION IS LINE SEQUENTIAL.
+    21
+    22     SELECT ARQMOV ASSIGN TO DISK
+    23     ORGANIZATION IS LINE SEQUENTIAL.
+    24
+    25     SELECT CADATU ASSIGN TO DISK
+    26     ORGANIZATION IS LINE SEQUENTIAL.
+    27
+    28     SELECT RELOCORR ASSIGN TO DISK.
+    29
+    30 DATA DIVISION.
+    31 FILE SECTION.
+    32
+    33 FD CADANT
+    34     LABEL RECORD ARE STANDARD
+    35     VALUE OF FILE-ID IS "CADANT.DAT".
+    36
+    37 01 REG-ANT.
+    38     02 CC-ANT         PIC 9(03).
+    39     02 TIPO-ANT       PIC X(01).
+    40     02 ENDER-ANT      PIC X(50).
+    41
+    42 FD ARQMOV
+    43     LABEL RECORD ARE STANDARD
+    44     VALUE OF FILE-ID IS "ARQMOV.DAT".
+    45
+    46 01 REG-MOV.
+    47     02 CC-MOV         PIC 9(03).
+    48     02 TIPO-MOV       PIC X(01).
+    49     02 ENDER-MOV      PIC X(50).
+    50
+    51 FD CADATU
+    52     LABEL RECORD ARE STANDARD
+    53     VALUE OF FILE-ID IS "CADATU.DAT".
+    54
+    55 01 REG-ATU.
+    56     02 CC-ATU         PIC 9(03).
+    57     02 TIPO-ATU       PIC X(01).
+* Microsoft COBOL Version 5.0        L2.4 revision 003 03-Dec-15 00:06 Page   2
+*                                        EM0402.CBL
+    58     02 ENDER-ATU      PIC X(50).
+    59
+    60 FD RELOCORR
+    61     LABEL RECORD IS OMMITED.
+    62
+    63 01 REG-REL            PIC X(80).
+    64
+    65 WORKING-STORAGE SECTION.
+    66
+    67 77 CH-ANT             PIC X(03) VALUE SPACES.
+    68 77 CH-MOV             PIC X(03) VALUE SPACES.
+    69 77 CT-LIN             PIC 9(02) VALUE 40.
+    70 77 CT-PAG             PIC 9(02) VALUE ZEROES.
+    71
+    72 01 CAB-01.
+    73     02 FILLER         PIC X(28) VALUE SPACES.
+    74     02 FILLER         PIC X(24) VALUE "RELATORIO DE ATUALIZACAO".
+    75     02 FILLER         PIC X(17) VALUE SPACES.
+    76     02 FILLER         PIC X(04) VALUE "PAG.".
+    77     02 VAR-PAG        PIC ZZ9.
+    78     02 FILLER         PIC X(04) VALUE SPACES.
+    79
+    80 01 CAB-02.
+    81     02 FILLER         PIC X(04) VALUE SPACES.
+    82     02 FILLER         PIC X(06) VALUE "CODIGO".
+    83     02 FILLER         PIC X(06) VALUE SPACES.
+    84     02 FILLER         PIC X(04) VALUE "TIPO".
+    85     02 FILLER         PIC X(06) VALUE SPACES.
+    86     02 FILLER         PIC X(08) VALUE "MENSAGEM".
+    87     02 FILLER         PIC X(46) VALUE SPACES.
+    88
+    89 01 DETALHE.
+    90     02 FILLER         PIC X(04) VALUE SPACES.
+    91     02 CODIGO         PIC 9(03).
+    92     02 FILLER         PIC X(09) VALUE SPACES.
+    93     02 TIPO           PIC X.
+    94     02 FILLER         PIC X(09) VALUE SPACES.
+    95     02 MENSAGEM       PIC X(30).
+    96     02 FILLER         PIC X(24) VALUE SPACES.
+    97
+    98 PROCEDURE DIVISION.
+    99
+   100 EM04-02.
+   101     PERFORM INICIO.
+   102     PERFORM PRINCIPAL UNTIL CH-ANT EQUAL CH-MOV AND
+   103                             CH-MOV EQUAL HIGH-VALUES.
+   104     PERFORM FIM.
+   105     STOP RUN.
+   106
+   107 INICIO.
+   108     OPEN INPUT   CADANT
+   109                  ARQMOV
+   110          OUTPUT  CADATU
+   111                  RELOCORR.
+   112     PERFORM LER-ANT.
+   113     PERFORM LER-MOV.
+   114
+   115 LER-ANT.
+* Microsoft COBOL Version 5.0        L2.4 revision 003 03-Dec-15 00:06 Page   3
+*                                        EM0402.CBL
+   116     READ CADANT AT END MOVE HIGH-VALUES TO CH-ANT.
+   117     IF CH-ANT EQUAL HIGH-VALUES
+   118         NEXT SENTENCE
+   119     ELSE
+   120         MOVE CC-ANT TO CH-ANT.
+   121
+   122 LER-MOV.
+   123     READ ARQMOV AT END MOVE HIGH-VALUES TO CH-MOV.
+   124     IF CH-MOV EQUAL HIGH-VALUES
+   125         NEXT SENTENCE
+   126     ELSE
+   127         MOVE CC-MOV TO CH-MOV.
+   128
+   129 PRINCIPAL.
+   130     IF CH-ANT EQUAL CH-MOV
+   131         PERFORM IGUAL
+   132         PERFORM LER-ANT
+   133         PERFORM LER-MOV
+   134     ELSE
+   135         IF CH-ANT LESS CH-MOV
+   136             PERFORM MENOR
+   137             PERFORM LER-ANT
+   138         ELSE
+   139             PERFORM MAIOR
+   140             PERFORM LER-MOV.
+   141
+   142 IGUAL.
+   143     IF TIPO-MOV EQUAL "E"
+   144         MOVE CC-ANT TO CODIGO
+   145         MOVE TIPO-MOV TO TIPO
+   146         MOVE "REGISTRO EXCLUIDO" TO MENSAGEM
+   147         PERFORM IMP-REL
+   148     ELSE
+   149         IF TIPO-MOV EQUAL "I"
+   150             PERFORM GRAVA-ANT
+   151             MOVE CC-MOV TO CODIGO
+   152             MOVE TIPO-MOV TO TIPO
+   153             MOVE "INCLUSAO P/ REG. EXISTENTE" TO MENSAGEM
+   154             PERFORM IMP-REL
+   155         ELSE
+   156             MOVE CC-MOV TO CC-ATU
+   157             MOVE TIPO-MOV TO TIPO-ATU
+   158             MOVE ENDER-MOV TO ENDER-ATU
+   159             WRITE REG-ATU
+   160             MOVE CC-ANT TO CODIGO
+   161             MOVE TIPO-ANT TO TIPO
+   162             MOVE "REGISTRO SUBSTITUIDO" TO MENSAGEM
+   163             PERFORM IMP-REL
+   164             MOVE CC-MOV TO CODIGO
+   165             MOVE TIPO-MOV TO TIPO
+   166             MOVE "REGISTRO SUBSTITUTO" TO MENSAGEM
+   167             PERFORM IMP-REL.
+   168
+   169 MENOR.
+   170     PERFORM GRAVA-ANT.
+   171
+   172 MAIOR.
+   173     PERFORM GRAVA-MOV.
+* Microsoft COBOL Version 5.0        L2.4 revision 003 03-Dec-15 00:06 Page   4
+*                                        EM0402.CBL
+   174
+   175 GRAVA-ANT.
+   176     MOVE CC-ANT TO CC-ATU.
+   177     MOVE TIPO-ANT TO TIPO-ATU.
+   178     MOVE ENDER-ANT TO ENDER-ATU.
+   179     WRITE REG-ATU.
+   180
+   181 GRAVA-MOV.
+   182     IF TIPO-MOV EQUAL "I"
+   183         MOVE CC-MOV TO CC-ATU
+   184         MOVE TIPO-MOV TO TIPO-ATU
+   185         MOVE ENDER-MOV TO ENDER-ATU
+   186         WRITE REG-ATU
+   187         MOVE CC-MOV TO CODIGO
+   188         MOVE TIPO-MOV TO TIPO
+   189         MOVE "REGISTRO INCLUIDO" TO MENSAGEM
+   190         PERFORM IMP-REL
+   191     ELSE
+   192         IF TIPO-MOV EQUAL "A"
+   193             MOVE CC-MOV TO CODIGO
+   194             MOVE TIPO-MOV TO TIPO
+   195             MOVE "ALTERACAO P/ REG. INEXISTENTE" TO MENSAGEM
+   196             PERFORM IMP-REL
+   197         ELSE
+   198             MOVE CC-MOV TO CODIGO
+   199             MOVE TIPO-MOV TO TIPO
+   200             MOVE "EXCLUSAO P/ REG. INEXISTENTE" TO MENSAGEM
+   201             PERFORM IMP-REL.
+   202
+   203 IMP-REL.
+   204     IF CT-LIN GREATER THAN 39
+   205         PERFORM CABECALHO.
+   206     PERFORM IMPDET.
+   207
+   208 CABECALHO.
+   209     ADD 1 TO CT-PAG.
+   210     MOVE CT-PAG TO VAR-PAG.
+   211     MOVE SPACES TO REG-REL.
+   212     WRITE REG-REL AFTER ADVANCING PAGE.
+   213     WRITE REG-REL FROM CAB-01 AFTER ADVANCING 1 LINE.
+   214     WRITE REG-REL FROM CAB-02 AFTER ADVANCING 2 LINES.
+   215     MOVE ZEROES TO CT-LIN.
+   216
+   217 IMPDET.
+   218     WRITE REG-REL FROM DETALHE AFTER ADVANCING 1 LINE.
+   219     ADD 1 TO CT-LIN.
+   220
+   221 FIM.
+   222     CLOSE CADANT
+   223           ARQMOV
+   224           CADATU
+   225           RELOCORR.
+   226
+   227
+   228
+   229
+   230
+   231
+* Microsoft COBOL Version 5.0        L2.4 revision 003 03-Dec-15 00:06 Page   5
+*                                        EM0402.CBL
+   232
+   233
+   234
+   235
+   236
+   237
+   238
+   239
+   240
+   241
+   242
+   243
+   244
+   245
+* Microsoft COBOL Version 5.0        L2.4 revision 003
+* (C)Copyright Microsoft Corp 1984, 1993       URN AXUPA/ZZ0/00001
+*                                              REF GNB-029052003A8
+*
+* Total Messages:     0
+* Data:        1708     Code:        1203

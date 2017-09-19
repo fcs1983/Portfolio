@@ -1,0 +1,137 @@
+* Microsoft COBOL Version 5.0        L2.4 revision 003 10-Nov-15 23:41 Page   1
+*                                        EM0302.CBL
+* Options: LIST(EM0302.LST) ASMLIST(EM0302.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.    EM0302.
+     3 AUTHOR.        FABIO COSTA.
+     4 DATE-WRITTEN.  10/11/2015.
+     5 DATE-COMPILED. 10-Nov-15 2.
+     6 SECURITY.      NAO MODIFICAR SEM AUTORIZACAO.
+     7*REMARKS.       LER CADENT, SELECIONAR OS REGISTROS DO SEXO
+     8*               MASCULINO, GRAVAR EM CADSAI EM ORDEM DESCENDENTE
+     9*               PELO CAMPO CODIGO.
+    10
+    11 ENVIRONMENT DIVISION.
+    12 CONFIGURATION SECTION.
+    13 SOURCE-COMPUTER.  IBM-PC.
+    14 OBJECT-COMPUTER.  IBM-PC.
+    15 SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    16
+    17 INPUT-OUTPUT SECTION.
+    18 FILE-CONTROL.
+    19     SELECT CADENT ASSIGN TO DISK
+    20     ORGANIZATION IS LINE SEQUENTIAL.
+    21
+    22     SELECT TRAB ASSIGN TO DISK.
+    23
+    24     SELECT CADSAI ASSIGN TO DISK
+    25     ORGANIZATION IS LINE SEQUENTIAL.
+    26
+    27 FD CADENT
+    28     LABEL RECORD ARE STANDARD
+    29     VALUE OF FILE-ID IS "CADENT.DAT".
+    30
+    31 01 REG-ENT.
+    32     02 COD-ENT        PIC 9(05).
+    33     02 NOME-ENT       PIC X(30).
+    34     02 SEXO-ENT       PIC X.
+    35
+    36 SD TRAB.
+    37
+    38 01 REG-TRAB.
+    39     02 COD-TRAB       PIC 9(05).
+    40     02 NOME-TRAB      PIC X(30).
+    41     02 SEXO-TRAB      PIC X.
+    42
+    43 FD CADSAI
+    44     LABEL RECORD ARE STANDARD
+    45     VALUE OF FILE-ID IS "CADSAI.DAT".
+    46
+    47 01 REG-SAI.
+    48     02 COD-SAI           PIC 9(05).
+    49     02 NOME-SAI          PIC X(30).
+    50
+    51 WORKING-STORAGE SECTION.
+    52
+    53 77 FIM-ARQ            PIC X(03) VALUE "NAO".
+    54
+    55 PROCEDURE DIVISION.
+    56
+    57 EM03-02.
+* Microsoft COBOL Version 5.0        L2.4 revision 003 10-Nov-15 23:41 Page   2
+*                                        EM0302.CBL
+    58     SORT TRAB
+    59         DESCENDING KEY COD-TRAB
+    60         INPUT PROCEDURE ROT-ENTRADA
+    61         GIVING CADSAI.
+    62     STOP RUN.
+    63
+    64 ROT-ENTRADA SECTION.
+    65     PERFORM INICIO-ENTRADA.
+    66     PERFORM PRINCIPAL-ENTRADA UNTIL FIM-ARQ EQUAL "SIM".
+    67     PERFORM FIM-ENTRADA.
+    68
+    69 INICIO-ENTRADA SECTION.
+    70     OPEN INPUT CADENT.
+    71     PERFORM LEITURA-ENTRADA.
+    72
+    73 LEITURA-ENTRADA SECTION.
+    74     READ CADENT AT END MOVE "SIM" TO FIM-ARQ.
+    75
+    76 PRINCIPAL-ENTRADA SECTION.
+    77     PERFORM SELECAO-ENTRADA.
+    78     PERFORM LEITURA-ENTRADA.
+    79
+    80 SELECAO-ENTRADA SECTION.
+    81     IF SEXO-ENT EQUAL TO "M"
+    82         PERFORM GRAVACAO-ENTRADA.
+    83
+    84 GRAVACAO-ENTRADA SECTION.
+    85     MOVE COD-ENT TO COD-TRAB.
+    86     MOVE NOME-ENT TO NOME-TRAB.
+    87     MOVE SEXO-ENT TO SEXO-TRAB.
+    88     RELEASE REG-TRAB.
+    89
+    90 FIM-ENTRADA SECTION.
+    91     CLOSE CADENT.
+    92
+    93
+    94
+    95
+    96
+    97
+    98
+    99
+   100
+   101
+   102
+   103
+   104
+   105
+   106
+   107
+   108
+   109
+   110
+   111
+   112
+   113
+   114
+   115
+* Microsoft COBOL Version 5.0        L2.4 revision 003 10-Nov-15 23:41 Page   3
+*                                        EM0302.CBL
+   116
+   117
+   118
+   119
+   120
+   121
+   122
+   123
+   124
+* Microsoft COBOL Version 5.0        L2.4 revision 003
+* (C)Copyright Microsoft Corp 1984, 1993       URN AXUPA/ZZ0/00001
+*                                              REF GNB-029052003A8
+*
+* Total Messages:     0
+* Data:        1100     Code:         581

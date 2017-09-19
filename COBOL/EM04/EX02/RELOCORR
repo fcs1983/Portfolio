@@ -1,0 +1,16 @@
+                                                                                
+                            RELATORIO DE ATUALIZACAO                 PAG.  1    
+
+    CODIGO      TIPO      MENSAGEM                                              
+    000         I         REGISTRO INCLUIDO                                     
+    002         I         REGISTRO INCLUIDO                                     
+    003         I         INCLUSAO P/ REG. EXISTENTE                            
+    005         C         REGISTRO SUBSTITUIDO                                  
+    005         A         REGISTRO SUBSTITUTO                                   
+    007         C         REGISTRO SUBSTITUIDO                                  
+    007         A         REGISTRO SUBSTITUTO                                   
+    010         A         ALTERACAO P/ REG. INEXISTENTE                         
+    013         E         REGISTRO EXCLUIDO                                     
+    015         E         REGISTRO EXCLUIDO                                     
+    016         E         EXCLUSAO P/ REG. INEXISTENTE                          
+    018         I         REGISTRO INCLUIDO                                     
