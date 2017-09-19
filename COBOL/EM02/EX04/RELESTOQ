@@ -1,0 +1,23 @@
+                                                                                
+DATA: 13/10/15     RELATORIO DE MATERIAL EM ESTOQUE                   PAG.   1  
+
+
+CODIGO    NOME          QTDE DO    CUSTO UNITARIO    CUSTO TOTAL                
+                        ESTOQUE                                                 
+00000   MARTELO              20          50,90         1.018,00                 
+11111   CHAVE DE FENDA      500           5,75         2.875,00                 
+22222   CHAVE DE BOCA        20          20,80           416,00                 
+33333   BROCA                60           6,30           378,00                 
+44444   LATA DE TINTA       400          68,23        27.292,00                 
+55555   LIXA                800           1,20           960,00                 
+66666   ESPATULA            134           8,10         1.085,00                 
+77777   ROLO DE PINTOR       30          15,00           450,00                 
+88888   PINCEL               98           6,48           635,00                 
+99999   ALICATE              75          49,90         3.742,00                                                                                                 
+
+DATA: 13/10/15     RELATORIO DE MATERIAL EM ESTOQUE                   PAG.   1  
+
+
+QUANTIDADE TOTAL               PRECO MEDIO               PRECO TOTAL            
+
+      2.137                       18,00                   38.851,00             

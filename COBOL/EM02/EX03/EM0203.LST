@@ -1,0 +1,213 @@
+* Microsoft COBOL Version 5.0        L2.4 revision 003 12-Oct-15 21:37 Page   1
+*                                        EM0203.CBL
+* Options: LIST(EM0203.LST) ASMLIST(EM0203.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.    EM0203.
+     3 AUTHOR.        FABIO COSTA.
+     4 INSTALLATION.  FATEC-SP.
+     5 DATE-WRITTEN.  12/10/2015.
+     6 DATE-COMPILED. 12-Oct-15 2.
+     7 SECURITY.      NAO MODIFICAR SEM AUTORIZACAO.
+     8*REMARKS.       LER CADENT, SELECIONAR REGISTROS COM SALARIO
+     9*               MAIOR OU IGUAL A R$5000,00 E SEXO FEMININO
+    10*               IMPRIMIR RELSAI.
+    11
+    12 ENVIRONMENT DIVISION.
+    13 CONFIGURATION SECTION.
+    14 SOURCE-COMPUTER.  IBM-PC.
+    15 OBJECT-COMPUTER.   IBM-PC.
+    16 SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    17
+    18 INPUT-OUTPUT SECTION.
+    19 FILE-CONTROL.
+    20     SELECT CADENT ASSIGN TO DISK
+    21     ORGANIZATION IS LINE SEQUENTIAL.
+    22
+    23     SELECT RELSAI ASSIGN TO DISK.
+    24
+    25 DATA DIVISION.
+    26 FILE SECTION.
+    27
+    28 FD CADENT
+    29     LABEL RECORD ARE STANDARD
+    30     VALUE OF FILE-ID IS "CADENT.DAT".
+    31
+    32 01 REG-ENT.
+    33     02 COD-ENT        PIC 9(07).
+    34     02 NOME-ENT       PIC X(30).
+    35     02 SAL-ENT        PIC 9(05)V99.
+    36     02 SEXO-ENT       PIC X.
+    37
+    38 FD RELSAI
+    39     LABEL RECORD IS OMITTED.
+    40
+    41 01 REL-SAI            PIC X(80).
+    42
+    43 WORKING-STORAGE SECTION.
+    44
+    45     77 FIM-ARQ        PIC X(03) VALUE "NAO".
+    46     77 CT-LIN         PIC 9(02) VALUE 20.
+    47     77 CT-PAG         PIC 9(02) VALUE ZEROES.
+    48     77 TOTCLI1        PIC 9(05) VALUE ZEROES.
+    49     77 TOTSAL1        PIC 9(09)V99 VALUE ZEROES.
+    50
+    51 01 CAB-01.
+    52     02 FILLER         PIC X(70) VALUE SPACES.
+    53     02 FILLER         PIC X(05) VALUE "PAG. ".
+    54     02 VAR-PAG        PIC ZZ9   VALUE ZEROES.
+    55     02 FILLER         PIC X(02) VALUE SPACES.
+    56
+    57 01 CAB-02.
+* Microsoft COBOL Version 5.0        L2.4 revision 003 12-Oct-15 21:37 Page   2
+*                                        EM0203.CBL
+    58     02 FILLER         PIC X(21) VALUE SPACES.
+    59     02 FILLER         PIC X(38) VALUE
+    60                       "LISTAGEM DOS CLIENTES DO SEXO FEMININO".
+    61     02 FILLER         PIC X(21) VALUE SPACES.
+    62
+    63 01 CAB-03.
+    64     02 FILLER         PIC X(23) VALUE SPACES.
+    65     02 FILLER         PIC X(34) VALUE
+    66                       "COM SALARIOS SUPERIORES A 5.000,00".
+    67     02 FILLER         PIC X(23) VALUE SPACES.
+    68
+    69 01 CAB-04.
+    70     02 FILLER         PIC X(10) VALUE SPACES.
+    71     02 FILLER         PIC X(06) VALUE "CODIGO".
+    72     02 FILLER         PIC X(10) VALUE SPACES.
+    73     02 FILLER         PIC X(04) VALUE "NOME".
+    74     02 FILLER         PIC X(36) VALUE SPACES.
+    75     02 FILLER         PIC X(07) VALUE "SALARIO".
+    76     02 FILLER         PIC X(07) VALUE SPACES.
+    77
+    78 01 CAB-05.
+    79     02 FILLER         PIC X(80) VALUE SPACES.
+    80
+    81 01 DETALHE.
+    82     02 FILLER         PIC X(10) VALUE SPACES.
+    83     02 CODIGO         PIC 9(07) VALUE ZEROES.
+    84     02 FILLER         PIC X(09) VALUE SPACES.
+    85     02 NOME           PIC X(30).
+    86     02 FILLER         PIC X(10) VALUE SPACES.
+    87     02 SALARIO        PIC ZZ.999,99 VALUE ZEROES.
+    88     02 FILLER         PIC X(07) VALUE SPACES.
+    89
+    90 01 TOTCLI.
+    91     02 FILLER         PIC X(29) VALUE
+    92                       "TOTAL DE CLIENTES IMPRESSOS: ".
+    93     02 FILLER         PIC X(05) VALUE SPACES.
+    94     02 TOTCLI2        PIC ZZ.999.
+    95     02 FILLER         PIC X(41) VALUE SPACES.
+    96
+    97 01 TOTSAL.
+    98     02 FILLER         PIC X(16) VALUE "TOTAL DE SALARIO".
+    99     02 FILLER         PIC X(15) VALUE SPACES.
+   100     02 TOTSAL2        PIC ZZ.999,99.
+   101     02 FILLER         PIC X(42) VALUE SPACES.
+   102
+   103 PROCEDURE DIVISION.
+   104
+   105 EM02-03.
+   106     PERFORM INICIO.
+   107     PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM".
+   108     PERFORM TOTAL.
+   109     PERFORM FIM.
+   110     STOP RUN.
+   111
+   112 INICIO.
+   113     OPEN INPUT  CADENT
+   114          OUTPUT RELSAI.
+   115     PERFORM LEITURA.
+* Microsoft COBOL Version 5.0        L2.4 revision 003 12-Oct-15 21:37 Page   3
+*                                        EM0203.CBL
+   116
+   117 LEITURA.
+   118     READ CADENT AT END MOVE "SIM" TO FIM-ARQ.
+   119
+   120 PRINCIPAL.
+   121     IF SAL-ENT IS GREATER THAN OR EQUAL TO 5000,00 AND
+   122                                SEXO-ENT IS EQUAL TO "F" THEN
+   123         PERFORM IMPRESSAO.
+   124     PERFORM LEITURA.
+   125
+   126 IMPRESSAO.
+   127     IF CT-LIN IS GREATER THAN 19
+   128         PERFORM CABECALHO.
+   129     PERFORM IMPDET.
+   130
+   131 CABECALHO.
+   132     ADD 1 TO CT-PAG.
+   133     MOVE CT-PAG TO VAR-PAG.
+   134     MOVE SPACES TO REL-SAI.
+   135     WRITE REL-SAI AFTER ADVANCING PAGE.
+   136     WRITE REL-SAI FROM CAB-01 AFTER ADVANCING 1 LINE.
+   137     WRITE REL-SAI FROM CAB-02 AFTER ADVANCING 1 LINE.
+   138     WRITE REL-SAI FROM CAB-03 AFTER ADVANCING 1 LINE.
+   139     WRITE REL-SAI FROM CAB-04 AFTER ADVANCING 3 LINES.
+   140     WRITE REL-SAI FROM CAB-05 AFTER ADVANCING 1 LINE.
+   141     MOVE ZEROES TO CT-LIN.
+   142
+   143 IMPDET.
+   144     MOVE COD-ENT  TO CODIGO.
+   145     MOVE NOME-ENT TO NOME.
+   146     MOVE SAL-ENT  TO SALARIO.
+   147     ADD 1 TO TOTCLI1.
+   148     ADD SAL-ENT TO TOTSAL1.
+   149     WRITE REL-SAI FROM DETALHE AFTER ADVANCING 1 LINE.
+   150     ADD 1 TO CT-LIN.
+   151
+   152 TOTAL.
+   153     MOVE TOTCLI1 TO TOTCLI2.
+   154     MOVE TOTSAL1 TO TOTSAL2.
+   155     WRITE REL-SAI FROM TOTCLI AFTER ADVANCING 4 LINES.
+   156     WRITE REL-SAI FROM TOTSAL AFTER ADVANCING 1 LINE.
+   157
+   158 FIM.
+   159     CLOSE CADENT
+   160           RELSAI.
+   161
+   162
+   163
+   164
+   165
+   166
+   167
+   168
+   169
+   170
+   171
+   172
+   173
+* Microsoft COBOL Version 5.0        L2.4 revision 003 12-Oct-15 21:37 Page   4
+*                                        EM0203.CBL
+   174
+   175
+   176
+   177
+   178
+   179
+   180
+   181
+   182
+   183
+   184
+   185
+   186
+   187
+   188
+   189
+   190
+   191
+   192
+   193
+   194
+   195
+   196
+   197
+   198
+* Microsoft COBOL Version 5.0        L2.4 revision 003
+* (C)Copyright Microsoft Corp 1984, 1993       URN AXUPA/ZZ0/00001
+*                                              REF GNB-029052003A8
+*
+* Total Messages:     0
+* Data:        1632     Code:         772

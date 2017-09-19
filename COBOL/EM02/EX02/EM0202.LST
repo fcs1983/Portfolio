@@ -1,0 +1,178 @@
+* Microsoft COBOL Version 5.0        L2.4 revision 003 12-Oct-15 19:40 Page   1
+*                                        EM0202.CBL
+* Options: LIST(EM0202.LST) ASMLIST(EM0202.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.    EM0202.
+     3 AUTHOR.        FABIO COSTA.
+     4 INSTALLATION.  FATEC-SP.
+     5 DATE-WRITTEN.  12/10/2015.
+     6 DATE-COMPILED. 12-Oct-15 1.
+     7 SECURITY.      NAO MODIFICAR SEM AUTORIZACAO.
+     8*REMARKS.       LER CADCLI E IMPRIMIR RELCLI.
+     9
+    10 ENVIRONMENT DIVISION.
+    11 CONFIGURATION SECTION.
+    12 SOURCE-COMPUTER.  IBM-PC.
+    13 OBJECT-COMPUTER.  IBM-PC.
+    14 SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    15
+    16 INPUT-OUTPUT SECTION.
+    17 FILE-CONTROL.
+    18     SELECT CADCLI ASSIGN TO DISK
+    19     ORGANIZATION IS LINE SEQUENTIAL.
+    20
+    21     SELECT RELCLI ASSIGN TO DISK.
+    22
+    23 DATA DIVISION.
+    24 FILE SECTION.
+    25
+    26 FD CADCLI
+    27     LABEL RECORD ARE STANDARD
+    28     VALUE OF FILE-ID IS "CADCLI.DAT".
+    29
+    30 01 REG-ENT.
+    31     02 CPF            PIC 9(11).
+    32     02 NOME-ENT       PIC X(30).
+    33     02 EST-ENT        PIC X(02).
+    34     02 CID-ENT        PIC X(30).
+    35     02 TEL-ENT        PIC 9(08).
+    36     02 DATA-ENT.
+    37         03 DD         PIC 99.
+    38         03 MM         PIC 99.
+    39         03 AA         PIC 9999.
+    40
+    41 FD RELCLI
+    42     LABEL RECORD IS OMMITED.
+    43
+    44 01 REL-SAI            PIC X(80).
+    45
+    46 WORKING-STORAGE SECTION.
+    47
+    48 77 FIM-ARQ            PIC X(03) VALUE "NAO".
+    49 77 CT-LIN             PIC 9(02) VALUE 25.
+    50 77 CT-PAG             PIC 9(02) VALUE ZEROES.
+    51 77 TOTCLI1            PIC 9(04) VALUE ZEROES.
+    52
+    53 01 CAB-01.
+    54     02 FILLER         PIC X(70) VALUE SPACES.
+    55     02 FILLER         PIC X(05) VALUE "PAG. ".
+    56     02 VAR-PAG        PIC Z9 VALUE ZEROES.
+    57     02 FILLER         PIC X(03) VALUE SPACES.
+* Microsoft COBOL Version 5.0        L2.4 revision 003 12-Oct-15 19:40 Page   2
+*                                        EM0202.CBL
+    58
+    59 01 CAB-02.
+    60     02 FILLER         PIC X(32) VALUE SPACES.
+    61     02 FILLER         PIC X(17) VALUE "TURISMAR TURISMOS".
+    62     02 FILLER         PIC X(31) VALUE SPACES.
+    63
+    64 01 CAB-03.
+    65     02 FILLER         PIC X(22) VALUE SPACES.
+    66     02 FILLER         PIC X(35) VALUE
+    67                       "CLIENTES NO PERIODO DE: 2010 A 2011".
+    68     02 FILLER         PIC X(23) VALUE SPACES.
+    69
+    70 01 CAB-04.
+    71     02 FILLER         PIC X(05) VALUE SPACES.
+    72     02 FILLER         PIC X(04) VALUE "NOME".
+    73     02 FILLER         PIC X(25) VALUE SPACES.
+    74     02 FILLER         PIC X(06) VALUE "ESTADO".
+    75     02 FILLER         PIC X(08) VALUE SPACES.
+    76     02 FILLER         PIC X(08) VALUE "TELEFONE".
+    77     02 FILLER         PIC X(24)  VALUE SPACES.
+    78
+    79 01 CAB-05.
+    80     02 FILLER         PIC X(80) VALUE ALL "-".
+    81
+    82 01 CAB-06.
+    83     02 FILLER         PIC X(80) VALUE SPACES.
+    84
+    85 01 DETALHE.
+    86     02 NOME           PIC X(30).
+    87     02 FILLER         PIC X(05) VALUE SPACES.
+    88     02 ESTADO         PIC X(02).
+    89     02 FILLER         PIC X(10) VALUE SPACES.
+    90     02 TELEFONE       PIC 9999.9999.
+    91     02 FILLER         PIC X(25) VALUE SPACES.
+    92
+    93 01 TOTCLI.
+    94     02 FILLER         PIC X(19) VALUE "TOTAL DE CLIENTES: ".
+    95     02 TOT            PIC ZZZ9 VALUE ZEROES.
+    96     02 FILLER         PIC X(57) VALUE SPACES.
+    97
+    98 PROCEDURE DIVISION.
+    99
+   100 EM02-02.
+   101     PERFORM INICIO.
+   102     PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM".
+   103     PERFORM TOTAL.
+   104     PERFORM FIM.
+   105     STOP RUN.
+   106
+   107 INICIO.
+   108     OPEN INPUT   CADCLI
+   109          OUTPUT  RELCLI.
+   110     PERFORM LEITURA.
+   111
+   112 LEITURA.
+   113     READ CADCLI AT END MOVE "SIM" TO FIM-ARQ.
+   114
+   115 PRINCIPAL.
+* Microsoft COBOL Version 5.0        L2.4 revision 003 12-Oct-15 19:40 Page   3
+*                                        EM0202.CBL
+   116     IF AA EQUAL TO 2010 OR 2011
+   117         PERFORM IMPRESSAO.
+   118     PERFORM LEITURA.
+   119
+   120 IMPRESSAO.
+   121     IF CT-LIN IS GREATER THAN 24
+   122         PERFORM CABECALHO.
+   123     PERFORM IMPDET.
+   124
+   125 CABECALHO.
+   126     ADD 1 TO CT-PAG.
+   127     MOVE CT-PAG TO VAR-PAG.
+   128     MOVE SPACES TO REL-SAI.
+   129     WRITE REL-SAI AFTER ADVANCING PAGE.
+   130     WRITE REL-SAI FROM CAB-01 AFTER ADVANCING 1 LINE.
+   131     WRITE REL-SAI FROM CAB-02 AFTER ADVANCING 1 LINE.
+   132     WRITE REL-SAI FROM CAB-03 AFTER ADVANCING 3 LINE.
+   133     WRITE REL-SAI FROM CAB-04 AFTER ADVANCING 3 LINE.
+   134     WRITE REL-SAI FROM CAB-05 AFTER ADVANCING 1 LINE.
+   135     WRITE REL-SAI FROM CAB-06 AFTER ADVANCING 1 LINE.
+   136     MOVE ZEROES TO CT-LIN.
+   137
+   138 IMPDET.
+   139     MOVE NOME-ENT TO NOME.
+   140     MOVE EST-ENT TO ESTADO.
+   141     MOVE TEL-ENT TO TELEFONE.
+   142     ADD 1 TO TOTCLI1.
+   143     WRITE REL-SAI FROM DETALHE AFTER ADVANCING 1 LINE.
+   144     ADD 1 TO CT-LIN.
+   145
+   146 TOTAL.
+   147     MOVE TOTCLI1 TO TOT.
+   148     WRITE REL-SAI FROM TOTCLI AFTER ADVANCING 4 LINES.
+   149
+   150 FIM.
+   151     CLOSE CADCLI
+   152           RELCLI.
+   153
+   154
+   155
+   156
+   157
+   158
+   159
+   160
+   161
+   162
+   163
+   164
+   165
+* Microsoft COBOL Version 5.0        L2.4 revision 003
+* (C)Copyright Microsoft Corp 1984, 1993       URN AXUPA/ZZ0/00001
+*                                              REF GNB-029052003A8
+*
+* Total Messages:     0
+* Data:        1644     Code:         750

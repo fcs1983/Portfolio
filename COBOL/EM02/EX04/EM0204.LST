@@ -1,0 +1,234 @@
+* Microsoft COBOL Version 5.0        L2.4 revision 003 13-Oct-15 00:29 Page   1
+*                                        EM0204.CBL
+* Options: LIST(EM0204.LST) ASMLIST(EM0204.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.    EM0204.
+     3 AUTHOR.        FABIO COSTA.
+     4 INSTALLATION.  FATEC-SP.
+     5 DATE-WRITTEN.  12/10/2015.
+     6 DATE-COMPILED. 13-Oct-15 0.
+     7 SECURITY.      NAO MODIFICAR SEM AUTORIZACAO.
+     8*REMARKS.       LER CADESTOQ E IMPRIMIR RELATORIO DE ACORDO COM
+     9*               O LAY-OUT.
+    10
+    11 ENVIRONMENT DIVISION.
+    12 CONFIGURATION SECTION.
+    13 SOURCE-COMPUTER.  IBM-PC.
+    14 OBJECT-COMPUTER.  IBM-PC.
+    15 SPECIAL-NAMES.    DECIMAL-POINT IS COMMA.
+    16
+    17 INPUT-OUTPUT SECTION.
+    18 FILE-CONTROL.
+    19     SELECT CADESTOQ ASSIGN TO DISK
+    20     ORGANIZATION IS LINE SEQUENTIAL.
+    21
+    22     SELECT RELESTOQ ASSIGN TO DISK.
+    23
+    24 DATA DIVISION.
+    25 FILE SECTION.
+    26
+    27 FD CADESTOQ
+    28     LABEL RECORD ARE STANDARD
+    29     VALUE OF FILE-ID IS "CADESTOQ.DAT".
+    30
+    31 01 REG-ENT.
+    32     02 COD-ENT        PIC 9(05).
+    33     02 NOME-ENT       PIC X(15).
+    34     02 QTDE-ENT       PIC 9(05).
+    35     02 PCOUN-ENT      PIC 9(06)V99.
+    36
+    37 FD RELESTOQ
+    38     LABEL RECORD IS OMMITED.
+    39
+    40 01 REL-SAI            PIC X(80).
+    41
+    42 WORKING-STORAGE SECTION.
+    43
+    44 77 FIM-ARQ            PIC X(03) VALUE "NAO".
+    45 77 CT-LIN             PIC 9(02) VALUE 25.
+    46 77 CT-PAG             PIC 9(02) VALUE ZEROES.
+    47 77 CTO-TOT            PIC 9(09) VALUE ZEROES.
+    48 77 CTDE-TOT           PIC 9(07) VALUE ZEROES.
+    49 77 PCO-MED            PIC 9(08) VALUE ZEROES.
+    50 77 PCO-TOT            PIC 9(10) VALUE ZEROES.
+    51
+    52 01 DATA-SIS.
+    53     03 ANO-SIS        PIC 9(02) VALUE ZEROES.
+    54     03 MES-SIS        PIC 9(02) VALUE ZEROES.
+    55     03 DIA-SIS        PIC 9(02) VALUE ZEROES.
+    56
+    57 01 CAB-01.
+* Microsoft COBOL Version 5.0        L2.4 revision 003 13-Oct-15 00:29 Page   2
+*                                        EM0204.CBL
+    58     02 FILLER         PIC X(06) VALUE "DATA: ".
+    59     02 DD             PIC 9(02).
+    60     02 FILLER         PIC X     VALUE "/".
+    61     02 MM             PIC 9(02).
+    62     02 FILLER         PIC X     VALUE "/".
+    63     02 AA             PIC 9(02).
+    64     02 FILLER         PIC X(05) VALUE SPACES.
+    65     02 FILLER         PIC X(32) VALUE
+    66                       "RELATORIO DE MATERIAL EM ESTOQUE".
+    67     02 FILLER         PIC X(19) VALUE SPACES.
+    68     02 FILLER         PIC X(05) VALUE "PAG. ".
+    69     02 VAR-PAG        PIC ZZ9   VALUE ZEROES.
+    70     02 FILLER         PIC X(02) VALUE SPACES.
+    71
+    72 01 CAB-02.
+    73     02 FILLER         PIC X(06) VALUE "CODIGO".
+    74     02 FILLER         PIC X(04) VALUE SPACES.
+    75     02 FILLER         PIC X(04) VALUE "NOME".
+    76     02 FILLER         PIC X(10) VALUE SPACES.
+    77     02 FILLER         PIC X(07) VALUE "QTDE DO".
+    78     02 FILLER         PIC X(04) VALUE SPACES.
+    79     02 FILLER         PIC X(14) VALUE "CUSTO UNITARIO".
+    80     02 FILLER         PIC X(04) VALUE SPACES.
+    81     02 FILLER         PIC X(11) VALUE "CUSTO TOTAL".
+    82     02 FILLER         PIC X(16) VALUE SPACES.
+    83
+    84 01 CAB-03.
+    85     02 FILLER         PIC X(24) VALUE SPACES.
+    86     02 FILLER         PIC X(07) VALUE "ESTOQUE".
+    87     02 FILLER         PIC X(49) VALUE SPACES.
+    88
+    89 01 DETALHE.
+    90     02 CODIGO         PIC 9(05).
+    91     02 FILLER         PIC X(03) VALUE SPACES.
+    92     02 NOME           PIC X(15).
+    93     02 FILLER         PIC X(03) VALUE SPACES.
+    94     02 QTDE           PIC Z.ZZ9.
+    95     02 FILLER         PIC X(05) VALUE SPACES.
+    96     02 CTOUN          PIC ZZZ.ZZ9,99.
+    97     02 FILLER         PIC X(05) VALUE SPACES.
+    98     02 CTOTOTAL       PIC Z.ZZZ.ZZ9,99.
+    99     02 FILLER         PIC X(23) VALUE SPACES.
+   100
+   101 01 CAB-04.
+   102     02 FILLER         PIC X(16) VALUE "QUANTIDADE TOTAL".
+   103     02 FILLER         PIC X(15) VALUE SPACES.
+   104     02 FILLER         PIC X(11) VALUE "PRECO MEDIO".
+   105     02 FILLER         PIC X(15) VALUE SPACES.
+   106     02 FILLER         PIC X(11) VALUE "PRECO TOTAL".
+   107     02 FILLER         PIC X(12) VALUE SPACES.
+   108
+   109 01 DETALHE2.
+   110     02 FILLER         PIC X(02) VALUE SPACES.
+   111     02 CTDE-TOT1      PIC Z.ZZZ.ZZ9.
+   112     02 FILLER         PIC X(18) VALUE SPACES.
+   113     02 PCO-MED1       PIC ZZZ.ZZ9,99.
+   114     02 FILLER         PIC X(15) VALUE SPACES.
+   115     02 PCO-TOT1       PIC ZZ.ZZZ.ZZ9,99.
+* Microsoft COBOL Version 5.0        L2.4 revision 003 13-Oct-15 00:29 Page   3
+*                                        EM0204.CBL
+   116     02 FILLER         PIC X(20) VALUE SPACES.
+   117
+   118 PROCEDURE DIVISION.
+   119
+   120 EM02-03.
+   121     PERFORM INICIO.
+   122     PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM".
+   123     PERFORM TOTAL.
+   124     PERFORM FIM.
+   125     STOP RUN.
+   126
+   127 INICIO.
+   128     OPEN INPUT  CADESTOQ
+   129          OUTPUT RELESTOQ.
+   130     PERFORM LEITURA.
+   131
+   132 LEITURA.
+   133     READ CADESTOQ AT END MOVE "SIM" TO FIM-ARQ.
+   134
+   135 PRINCIPAL.
+   136     PERFORM CALCULO.
+   137     PERFORM IMPRESSAO.
+   138     PERFORM LEITURA.
+   139
+   140 CALCULO.
+   141     MULTIPLY QTDE-ENT BY PCOUN-ENT GIVING CTO-TOT.
+   142     ADD QTDE-ENT TO CTDE-TOT.
+   143     ADD CTO-TOT TO PCO-TOT.
+   144
+   145 IMPRESSAO.
+   146     IF CT-LIN IS GREATER THAN 24
+   147         PERFORM CABECALHO.
+   148     PERFORM IMPDET.
+   149
+   150 CABECALHO.
+   151     ADD 1 TO CT-PAG.
+   152     MOVE CT-PAG TO VAR-PAG.
+   153     ACCEPT DATA-SIS FROM DATE.
+   154     MOVE DIA-SIS TO DD.
+   155     MOVE MES-SIS TO MM.
+   156     MOVE ANO-SIS TO AA.
+   157     MOVE SPACES TO REL-SAI.
+   158     WRITE REL-SAI AFTER ADVANCING PAGE.
+   159     WRITE REL-SAI FROM CAB-01 AFTER ADVANCING 1 LINE.
+   160     WRITE REL-SAI FROM CAB-02 AFTER ADVANCING 3 LINES.
+   161     WRITE REL-SAI FROM CAB-03 AFTER ADVANCING 1 LINE.
+   162     MOVE ZEROES TO CT-LIN.
+   163
+   164 IMPDET.
+   165     MOVE COD-ENT   TO CODIGO.
+   166     MOVE NOME-ENT  TO NOME.
+   167     MOVE QTDE-ENT  TO QTDE.
+   168     MOVE PCOUN-ENT TO CTOUN.
+   169     MOVE CTO-TOT TO CTOTOTAL.
+   170     WRITE REL-SAI FROM DETALHE AFTER ADVANCING 1 LINE.
+   171     ADD 1 TO CT-LIN.
+   172
+   173 TOTAL.
+* Microsoft COBOL Version 5.0        L2.4 revision 003 13-Oct-15 00:29 Page   4
+*                                        EM0204.CBL
+   174     ADD 1 TO CT-PAG.
+   175     MOVE CTDE-TOT TO CTDE-TOT1.
+   176     MOVE PCO-TOT TO PCO-TOT1.
+   177     DIVIDE PCO-TOT BY CTDE-TOT GIVING PCO-MED.
+   178     MOVE PCO-MED TO PCO-MED1.
+   179     MOVE SPACES TO REL-SAI.
+   180     WRITE REL-SAI AFTER ADVANCING PAGE.
+   181     WRITE REL-SAI FROM CAB-01 AFTER ADVANCING 2 LINES.
+   182     WRITE REL-SAI FROM CAB-04 AFTER ADVANCING 3 LINES.
+   183     WRITE REL-SAI FROM DETALHE2 AFTER ADVANCING 2 LINES.
+   184
+   185 FIM.
+   186     CLOSE CADESTOQ
+   187           RELESTOQ.
+   188
+   189
+   190
+   191
+   192
+   193
+   194
+   195
+   196
+   197
+   198
+   199
+   200
+   201
+   202
+   203
+   204
+   205
+   206
+   207
+   208
+   209
+   210
+   211
+   212
+   213
+   214
+   215
+   216
+   217
+   218
+   219
+* Microsoft COBOL Version 5.0        L2.4 revision 003
+* (C)Copyright Microsoft Corp 1984, 1993       URN AXUPA/ZZ0/00001
+*                                              REF GNB-029052003A8
+*
+* Total Messages:     0
+* Data:        1490     Code:         833
