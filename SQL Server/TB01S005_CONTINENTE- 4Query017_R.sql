@@ -1,0 +1,57 @@
+-- ----------------------------------------------------------------------------------------
+-- Gabriel Issa Shammas (GIS) - 01 de janeiro de 2000 a 31 de dezembro de 2014
+-- ----------------------------------------------------------------------------------------
+-- Doc- QUERY017- dbo.GIS_TB01S005_CONTINENTE
+--
+-- Qual é a área média dos continentes?
+-- Atenção: Imprimir também a superfície dos continentes.
+--
+-- ----------------------------------------------------------------------------------------
+-- Atenção. Indicação do BD a ser usado. Se for o caso, mude o nome do Banco.
+-- ----------------------------------------------------------------------------------------
+--
+USE BD_T_G01;
+--
+-- ----------------------------------------------------------------------------------------
+-- Seleção de todos os dados para visualização do conteúdo da tabela.
+-- ----------------------------------------------------------------------------------------
+--
+Select avg(ext_km2) 'Área média dos continentes',
+       sum(ext_km2) 'Superfície dos continentes'
+  From dbo.FCS_TB01S005_CONTINENTE;
+--
+-- ----------------------------------------------------------------------------------------
+-- Comentários.
+-- ----------------------------------------------------------------------------------------
+--
+-- As cláusulas (FROM, WHERE, ORDER BY e outras) aparecem uma única vez no comando SELECT.
+--
+-- A cláusula FROM é a única cláusula obrigatória no comando SELECT.
+--
+-- A cláusula WHERE é um filtro de seleção de tuplas, permitindo a exibição somente das tu-
+-- plas que atenderem à restrição constante na cláusula.
+--
+-- A função substring permite verificar uma parte de uma string.
+--
+-- O uso do Rótulo da coluna (ou Label da coluna ou cabeçalho da coluna) permite imprimir o
+-- resultado do comando SELECT com o nome mais adequado das colunas para o entendimento dos
+-- usuários, ao invés de imprimir o nome da coluna no cabeçalho.
+--
+-- As funções de agregação são declaradas no comando SELECT  tal qual se faz com a declara-
+-- ção de uma coluna.
+--
+-- Como a coluna resultante da execução de uma função de agregagação não veio de uma coluna
+-- específica da tabela, esta coluna não tem nome. No cabeçalho desta coluna irá constar  o
+-- título sem nome (NO COLUMN NAME).
+--
+-- Esta não é uma boa forma de apresentar  uma determinada informação, sendo necessário al-
+-- terar o nome da coluna de modo que o seu conteúdo seja claro  para quem estiver lendo  o
+-- relatório.
+--
+-- Para evitar este nome de coluna, utiliza-se de um label ou rótulo de coluna.
+--
+-- Em um mesmo comando SELECT, é possível exibir várias funções de agregação.
+--
+-- ----------------------------------------------------------------------------------------
+-- Fim das Queries
+-- ----------------------------------------------------------------------------------------

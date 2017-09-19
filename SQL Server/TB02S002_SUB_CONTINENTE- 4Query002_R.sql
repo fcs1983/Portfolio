@@ -1,0 +1,42 @@
+-- ----------------------------------------------------------------------------------------
+-- Gabriel Issa Shammas (FCS) - 01 de janeiro de 2000 a 31 de dezembro de 2014
+-- ----------------------------------------------------------------------------------------
+-- Doc- QUERY002- dbo.FCS_TB02S002_SUB_CONTINENTE
+--
+-- Selecionar todos os subcontinentes da tabela  dbo.FCS_TB02S002_SUB_CONTINENTE,  explici-
+-- tando as colunas no comando.
+--
+-- ----------------------------------------------------------------------------------------
+-- Atenção. Indicação do BD a ser usado. Se for o caso, mude o nome do Banco.
+-- ----------------------------------------------------------------------------------------
+--
+USE BD_T_G01;
+--
+-- ----------------------------------------------------------------------------------------
+-- Seleção de todos os dados para visualização do conteúdo da tabela.
+-- ----------------------------------------------------------------------------------------
+--
+Select codigo, nome, cod_continente, ext_km2, obs
+  From dbo.FCS_TB02S002_SUB_CONTINENTE;
+--
+---- ----------------------------------------------------------------------------------------
+-- Comentários.
+-- ----------------------------------------------------------------------------------------
+--
+-- No comando SELECT, o '*' indica que se deseja recuperar todas as colunas que  compõem  a
+-- tupla.
+--
+-- No comando SELECT, ao invés de utilizar o '*' para indicar que se deseja recuperar todas
+-- as colunas que compõem a tupla,  pode-se relacionar explicitamente todas  as colunas que
+-- compõem a tupla.
+--
+-- Tupla é sinônimo de reFCStro ou linha da tabela, ou ainda, conjunto de colunas.
+--
+-- A cláusula FROM é a única cláusula obrigatória no comando SELECT.
+--
+-- Como não existe a cláusula WHERE,  que é um filtro de seleção de tuplas,  serão selecio-
+-- nadas todas as tuplas.
+--
+-- ----------------------------------------------------------------------------------------
+-- Fim das Queries
+-- ----------------------------------------------------------------------------------------

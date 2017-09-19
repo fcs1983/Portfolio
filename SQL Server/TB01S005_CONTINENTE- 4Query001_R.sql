@@ -1,0 +1,37 @@
+-- ----------------------------------------------------------------------------------------
+-- Gabriel Issa Shammas (GIS) - 01 de janeiro de 2000 a 31 de dezembro de 2014
+-- ----------------------------------------------------------------------------------------
+-- Doc- QUERY001- dbo.GIS_TB01S005_CONTINENTE
+--
+-- Selecionar todos os continentes da tabela dbo.GIS_TB01S005_CONTINENTE.
+--
+-- ----------------------------------------------------------------------------------------
+-- Atenção. Indicação do BD a ser usado. Se for o caso, mude o nome do Banco.
+-- ----------------------------------------------------------------------------------------
+--
+USE BD_T_G01;
+--
+-- ----------------------------------------------------------------------------------------
+-- Seleção de todos os dados para visualização do conteúdo da tabela.
+-- ----------------------------------------------------------------------------------------
+--
+Select *
+  From dbo.FCS_TB01S005_CONTINENTE;
+--
+-- ----------------------------------------------------------------------------------------
+-- Observação.
+-- ----------------------------------------------------------------------------------------
+--
+-- No comando SELECT, o '*' indica que se deseja recuperar todas as colunas que  compõem  a
+-- tupla.
+--
+-- Tupla é sinônimo de registro ou linha da tabela, ou ainda, conjunto de colunas.
+--
+-- A cláusula FROM é a única cláusula obrigatória no comando SELECT.
+--
+-- Como não existe a cláusula WHERE,  que é um filtro de seleção de tuplas,  serão selecio-
+-- nadas todas as tuplas.
+--
+-- ----------------------------------------------------------------------------------------
+-- Fim das Queries
+-- ----------------------------------------------------------------------------------------
