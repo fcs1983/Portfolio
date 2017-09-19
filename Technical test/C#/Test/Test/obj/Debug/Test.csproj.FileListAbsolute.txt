@@ -1,0 +1,5 @@
+C:\Users\xD\Desktop\C#\Test\Test\bin\Debug\Test.dll
+C:\Users\xD\Desktop\C#\Test\Test\bin\Debug\Test.pdb
+C:\Users\xD\Desktop\C#\Test\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+C:\Users\xD\Desktop\C#\Test\Test\obj\Debug\Test.dll
+C:\Users\xD\Desktop\C#\Test\Test\obj\Debug\Test.pdb
