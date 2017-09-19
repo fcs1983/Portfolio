@@ -1,0 +1,9 @@
+H:\C#\Projetos\WFAFolhaPagto\WFAFolhaPagto\bin\Debug\WFAFolhaPagto.exe.config
+H:\C#\Projetos\WFAFolhaPagto\WFAFolhaPagto\bin\Debug\WFAFolhaPagto.exe
+H:\C#\Projetos\WFAFolhaPagto\WFAFolhaPagto\bin\Debug\WFAFolhaPagto.pdb
+H:\C#\Projetos\WFAFolhaPagto\WFAFolhaPagto\obj\Debug\WFAFolhaPagto.csprojResolveAssemblyReference.cache
+H:\C#\Projetos\WFAFolhaPagto\WFAFolhaPagto\obj\Debug\WFAFolhaPagto.Form1.resources
+H:\C#\Projetos\WFAFolhaPagto\WFAFolhaPagto\obj\Debug\WFAFolhaPagto.Properties.Resources.resources
+H:\C#\Projetos\WFAFolhaPagto\WFAFolhaPagto\obj\Debug\WFAFolhaPagto.csproj.GenerateResource.Cache
+H:\C#\Projetos\WFAFolhaPagto\WFAFolhaPagto\obj\Debug\WFAFolhaPagto.exe
+H:\C#\Projetos\WFAFolhaPagto\WFAFolhaPagto\obj\Debug\WFAFolhaPagto.pdb

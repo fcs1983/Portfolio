@@ -1,0 +1,9 @@
+E:\C#\Projetos\WFAFoguete\WFAFoguete\bin\Debug\WFAFoguete.exe.config
+E:\C#\Projetos\WFAFoguete\WFAFoguete\bin\Debug\WFAFoguete.exe
+E:\C#\Projetos\WFAFoguete\WFAFoguete\bin\Debug\WFAFoguete.pdb
+E:\C#\Projetos\WFAFoguete\WFAFoguete\obj\Debug\WFAFoguete.csprojResolveAssemblyReference.cache
+E:\C#\Projetos\WFAFoguete\WFAFoguete\obj\Debug\WFAFoguete.Properties.Resources.resources
+E:\C#\Projetos\WFAFoguete\WFAFoguete\obj\Debug\WFAFoguete.csproj.GenerateResource.Cache
+E:\C#\Projetos\WFAFoguete\WFAFoguete\obj\Debug\WFAFoguete.exe
+E:\C#\Projetos\WFAFoguete\WFAFoguete\obj\Debug\WFAFoguete.pdb
+E:\C#\Projetos\WFAFoguete\WFAFoguete\obj\Debug\WFAFoguete.frmFoguete.resources
