@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<title> Título da Página</title>
+		
+	</head>
+	<body>
+		<form name="form1" action="mailto:emal@prov.br" method="POST" enctype="text/plain" onSubmit="return enviar()">
+			<p><input type="text" name="usuario" size="50" placeholder="Digite seu nome" onChange="console.log(this.value)"></p>
+			
+			<p><input type="text" name="endereco" size="50" placeholder="Digite seu endereço"></p>
+			
+			<label for="opcao" style="float: left">Opção:</label>
+			
+			<p><input type="checkbox" name="opcao" value="S" onClick="console.log('..')"></p>
+			
+			<label for="enq" style="float: left">Enquete:</label>
+			<p><input type="radio" value="S" name="enq">
+			   <input type="radio" value="N" name="enq"></p>
+			
+			<select name="lista">
+				<option>Norte</option>
+				<option>Sul</option>
+				<option>Leste</option>
+				<option>Oeste</option>
+			</select>	
+			
+			<select name="opt" onChange="page(this)">
+				<option value="http://www.uol.com.br/">Uol</option>
+				<option value="http://www.fatecsp.br/">Fatec</option>
+				<option value="http://www.msn.com/pt-br">Msn</option>
+			</select>
+			
+			<p><input type="submit" value="Enviar">
+			   <input type="reset" value="Limpar"></p>
+		</form>
+		<script>
+			function enviar(){
+				console.log("Vai enviar para email..");
+				console.log(document.form1.usuario.value);
+				document.form1.endereco.focus();
+				document.form1.endereco.select();
+				console.log("Checkbox:" + document.form1.opcao.checked);
+				console.log("radio:" + document.form1.enq[0].checked)
+				return false;
+			}
+			console.log(document.forms[0].name);
+			console.log(document.forms[0].length);
+			console.log(document.forms[0].elements[0].name);
+			
+			function page(n){
+				window.open(n.value)	
+			}
+			
+		</script>
+	</body>
+</html>

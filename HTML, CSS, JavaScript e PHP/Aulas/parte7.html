@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Teste JavaScript</title>
+		
+		<script type="text/javascript" src="script1.js"></script>
+		
+		<script language="javascript">
+			alert("Mensagem 1...");
+			console.log("Testando saída no console");
+			document.write("Hoje é sexta-feira</br>");
+			document.write("<h1>Javascript com HTML</h1>");
+			document.write("Hoje é sexta-feira " + Date( ));
+			document.write("</br>"  + Number.MAX_VALUE);
+			console.log(10/0);
+			console.log(typeof(true));
+			var x;
+			x = 124;
+			console.log(x);
+			console.log(typeof(x));
+			x = "Fabio";
+			console.log(x);
+			console.log(typeof(x));
+			
+			var hoje = new Date();
+				console.log("</br>" + hoje);
+			var ferias = new Date("Dec 20 2016");
+				console.log("</br>" + ferias);
+			var dias = ferias - hoje;
+				dias /= 1000;
+				dias /= 60;
+				dias /= 60;
+				dias /= 24;
+				dias = Math.round(dias);
+				
+			console.log("Faltam " + dias + " dias para as férias");		
+			
+			
+			function troca( ) {
+					if (document.getElementById("tit1").innerHTML=="Clique-me!")
+					{
+						document.getElementById("tit1").innerHTML="Bem-Vindo!!!";
+					}
+					else
+						document.getElementById("tit1").innerHTML="Clique-me!";
+			} 
+			
+			function mudaCor( ) {
+				if (tit2.style.color == "black")
+					tit2.style.color="#ff0000"; 
+				else
+					tit2.style.color="black";
+			}
+			
+			function impr( ) {
+				tit3.innerHTML = nome.value;
+			}
+			
+		</script>	
+		
+	</head>
+	<body>
+		<h1>JavaScript</h1>
+		<input type="button" value="olá" onclick="alert('Mensagem...');"/>
+	
+		<script language="javascript">
+			alert("Mensagem 4...");
+		</script>	
+	
+		<h1 id="tit1" onclick="troca( );">Clique-me!</h1>
+	
+	
+		<h2 id="tit2">Título com classe!</h2> 
+		<input type="button"  value="Muda cor" onClick="mudaCor( );" />
+		</br></br>
+		Nome: <input type="text"  id="nome" size="30" onChange="impr( );" />
+		<h3 id="tit3">Nome</h3>
+		
+	</body>
+</html>

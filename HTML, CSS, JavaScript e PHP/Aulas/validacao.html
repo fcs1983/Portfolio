@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<title> Título da Página</title>
+		<script>
+			function enviar( ) {
+				if (user.value.length<3){
+					erro1.innerHTML = "Nome incompleto"; 
+					erro1.style.color = 'red';
+					user.select( );
+					user.focus( ) ;
+					return false;
+				}	
+				else{
+					erro1.innerHTML = "";
+				}
+				if (ch1.checked){
+					erro2.innerHTML = "Leve Guarda-Chuva!";
+					erro2.style.color = 'blue';
+				}	
+				else if (ch2.checked){
+					erro2.innerHTML = "Vá tranquilo!!!";
+					erro2.style.color = 'green';
+				}
+				else{
+					erro2.innerHTML = "Você não respondeu a pesquisa...";
+					erro2.style.color = 'red';
+				}				
+                return false;
+			}
+			
+			function limpar(){
+				erro1.innerHTML = "";
+				erro2.innerHTML = "";
+			}
+		</script>
+		<style>
+			#user{
+				margin-right: 30px;
+			}
+			#erro2{
+				margin-left: 90px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<form name="form1" action="mailto:seuemail@prov.com.br" method="POST" enctype="text/plain" onSubmit="return enviar();">
+			<p><input type="text" name="usuario" id="user" size="50" placeholder="Digite seu nome"><span id="erro1"></span></p>
+			<span id="erro1"></span>
+			<p>Será que vai chover???
+			<input type="radio" id="ch1" name="pesquisa" value="s" /> Sim
+			<input type="radio" id="ch2" name="pesquisa" value="n" /> Não      <span id="erro2"></span></p>
+			<p><input type="submit" value="Enviar"> 
+			<input type="reset" value="Limpar" onClick="limpar();"></p>
+		</form>
+	</body>
+</html>

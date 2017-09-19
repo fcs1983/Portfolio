@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Carregar</title>
+		<script language="javascript">
+			function carregar()
+			{
+				var opt;
+				opt = opcao.value;
+				switch(opt.toUpperCase())
+				{
+					case "A": window.location="http://www.fatecsp.br/";
+							  opcao.value = "";	
+						break;
+					case "B": window.location="https://www.google.com.br/";
+							  opcao.value = "";
+						break;
+					case "C": window.location="http://www.w3schools.com/";
+							  opcao.value = "";
+						break;
+					default: alert("Opção inválida.");
+							 opcao.value = "";	
+				}
+			}
+		</script>
+	</head>
+	<body>
+	Opção: <input type="Text" id="opcao" size="5" onChange="carregar();">
+	
+	</body>
+</html>

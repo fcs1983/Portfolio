@@ -1,0 +1,74 @@
+Alocação Dinamica
+
+Acontece em tempo de execução
+A area alocada durante a execução do programa não tem nome
+deve ser acessada pelo endereço guardado em um ponteiro
+
+- Como declarar um ponteiro:
+
+var <nome>: ^<tipo>;
+
+- declarar tipo
+
+type ptr = ^nodo;
+	nodo = record
+			data:integer;
+			link:ptr;
+		end;
+
+var px, py :^integer;
+
+- Como alocar area
+
+new(<nome do ponteiro>);       a func new aloca uma area de memória e guarda o endereço no ponteiro
+
+new(px);
+
+- como manipular
+
+<nome do ponteiro>^     para acessar o conteudo do endereço apontado
+
+px^ := 5;       
+
+- como liberar a área de memória
+
+dispose(<nome do ponteiro>);
+dispose(px);         
+
+program teste;
+
+var px, py :^integer;
+    a, b :integer;
+
+begin
+	a := 5;
+	b := 7;
+	new(px);
+	px^ := a;
+	new(py);
+	py^ := px^;
+	dispose(px);
+	px := py;
+	px^ := b;
+	writeln(py^);
+	new(py);
+	py^ := a;
+	
+end.
+
+
+- como apontar para nulo
+
+px := nil;
+
+
+
+
+
+
+	
+ 
+        
+
+
+

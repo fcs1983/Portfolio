@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Escrever</title>
+		<style>
+			*{margin:0; padding:0;}
+		</style>	
+	<script language="javascript">
+		function escreve( ) {
+			letra = String.fromCharCode(event.keyCode);
+			visor.innerHTML += letra;
+		}
+		
+		function moveu( ) {
+			visor1.innerHTML= "Coords: X= " + event.x + " Y= " + event.y;
+		}
+
+	</script>	
+	</head>
+	<body onKeyPress="escreve( )" onMouseMove="moveu( );">
+		<h1 id="visor"></h1>
+		<h1 id="visor1"></h1>
+	</body>
+</html>

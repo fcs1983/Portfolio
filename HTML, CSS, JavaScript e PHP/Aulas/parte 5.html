@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8" />
+		<title> Título da Página</title>
+	</head>
+	<body>
+		<form name="form1" id="form1" method="post" action="mailto:seuemail@teste.com">
+		<fieldset><legend>Dados</legend>
+		<p>
+			<label for="nome">Nome:</label>
+			<input type="text" name="nome" id="nome" size="50" maxlength="50" value="Fábio" accesskey="n" />
+		</p>
+		
+		<p>
+			<label for="endereco">Endereço:</label>
+			<input type="text" name="endereco" id="endereco" placeholder="Digite o endereço completo" required="required" />
+		</p>
+		
+		<p>
+			<label for="senha">Senha:</label>
+			<input type="password" name="senha" id="senha" size="8" maxlength="8" />
+		</p>
+		
+		<p>
+			Oculto:<input type="hidden" id="oculto" value="Informação oculta" />
+		</p>
+		
+		<p>
+			<label for="hob1">Natação:</label>
+			<input type="checkbox" name="hob1" id="hob1" value="N" />
+			<input type="checkbox" name="hob2" id="hob2" value="J" checked="checked" /> Jogos
+			<input type="checkbox" name="hob3" id="hob3" value="F" /> Futebol
+		</p>
+		
+		<p>
+			<input type="radio" id="r1" name="enq" value="S" /> SIM
+			<input type="radio" id="r2" name="enq" value="N" checked="checked" /> NAO
+		</p>
+		
+		<p>
+			<input type="file" size="50" value="Procurar" multiple/>
+		</p>
+		
+		<p>
+			<select name="sel1" id="sel1" size="5" multiple>
+				<optgroup label="grupo 1">
+				<option name="op1" id="op1" value="op1">Opção 1</option>
+				<option name="op2" id="op2" value="op2">Opção 2</option>
+				<optgroup>
+				<optgroup label="grupo 2">
+				<option name="op3" id="op3" value="op3">Opção 3</option>
+				<option name="op4" id="op4" value="op4">Opção 4</option>
+				<option name="op5" id="op5" value="op5" selected>Opção 5</option>
+				</optgroup>
+			</select>
+		</p>
+		
+		<p>
+			Comentário:
+			<textarea name="txt1" id="txt1" cols="30" rows="4"></textarea>
+		</p>
+		
+		<p>
+			<input type="submit" name="sub" id="sub" value="Enviar" />
+			<input type="reset" name="res" id="res" value="Limpar" />
+			<input type="image" src="enviar.png" />
+			<button type="reset">
+				<img src="limpar.jpg">
+			</button>
+			<input type="button" value="Botão" name="bot" id="bot" onclick="alert('Hoje é sexta');" />
+		</p>
+		
+		<p>
+			Cor: <input type="color" name="cor" id="cor" />	
+		</p>	
+		<p>
+			email: <input type="email" name="email" id="email" />
+		</p>
+		
+		<p>
+			<input list="browsers" name="browser">
+			<datalist id="browsers">
+				<option value="Internet Explorer">
+				<option value="Firefox">
+				<option value="Chrome">
+				<option value="Opera">
+				<option value="Safari">
+			</datalist>
+		</p>
+		
+		<p>
+		<marquee  behavior="slide" direction="up" loop="3" scrolldelay=“20" scrollamount=“5">
+                  Letreiro Digital...
+		</marquee>
+		</p>
+		
+		</fieldset>
+	</body>
+</html>
+
+
+
+
+

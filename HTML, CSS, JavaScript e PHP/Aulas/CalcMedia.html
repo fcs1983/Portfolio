@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<title> Calcular a média </title>
+		
+		<script language="javascript">
+			function isNumber(n) {
+				return !isNaN(parseFloat(n)) && isFinite(n);
+			}
+			
+			var n1, n2, n3;
+			var n11 = false, n22 = false, n33 = false;
+			
+			while (n11 == false)
+			{
+				n1 = prompt("Nota 1: ");
+				if (isNumber(n1))
+				{
+					n1 = parseFloat(n1);
+					if (n1 <= 10 && n1 >= 0)
+						n11 = true;
+					else
+						alert("Nota 1 inválida, redigite.");
+				}
+				else
+					alert("Nota 1 inválida, redigite.");
+			}
+			
+			while (n22 == false)
+			{
+				n2 = prompt("Nota 2: ");
+				if (isNumber(n2))
+				{
+					n2 = parseFloat(n2);
+					if (n2 <= 10 && n2 >= 0)
+						n22 = true;
+					else
+						alert("Nota 2 inválida, redigite.");
+				}
+				else
+					alert("Nota 2 inválida, redigite.");
+			}
+			
+			while (n33 == false)
+			{
+				n3 = prompt("Nota 3: ");
+				if (isNumber(n3))
+				{
+					n3 = parseFloat(n3);
+					if (n3 <= 10 && n3 >= 0)
+						n33 = true;
+					else
+						alert("Nota 3 inválida, redigite.");
+				}
+				else
+					alert("Nota 3 inválida, redigite.");
+			}
+			
+			console.log("n1: " + n1);
+			console.log("n2: " + n2);
+			console.log("n2: " + n3);
+			var media = (n1 + n2 + n3) / 3;
+			var conceito;
+			if (media >= 9)
+				conceito = "E";
+			else if (media >= 7.5 && media < 9)
+				conceito = "A";
+			else if (media >= 6 && media < 7.5)
+				conceito = "B";
+			else	
+				conceito = "C";
+			
+			console.log("media: " + media.toFixed(2) + " conceito: " + conceito);	
+			alert("media: " + media.toFixed(2) + " conceito: " + conceito);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

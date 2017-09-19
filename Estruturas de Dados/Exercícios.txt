@@ -1,0 +1,133 @@
+www.duduchi.shutterfly.com
+
+
+
+
+email de exercicios:   prof.duduchi.ed@gmail.com
+assunto: [EX01][numero de matricula]
+corpo: nome, numero, comentarios, compilador usado.
+anexos: arquivos .pas
+
+Exercicios 1 
+
+para: 09/03/2016
+
+1. Faça um programa que use uma pilha para inverter o conteúdo de uma string recebida pelo 
+console e apresentar o resultado.
+
+2. Crie uma função que receba uma string e retorne verdadeiro ou falso para verificar se a string é um palindromo.
+
+3. Construa uma função que receba uma frase em uma string e retorne uma string com a mesma frase com as palavras invertidas.
+
+
+dicas:
+
+lenght() retorna o tamanho do string
+
+readln (s);
+:= 1;
+while (i <= lenght(s))
+begin
+	push(p, s[i]);
+	i:= i+1;
+end;
+
+while (not isempity (p))
+write (pop(P));
+
+
+
+
+Exercicios 2
+
+para: 16/03/2016
+
+Implementar o deque (empurra para incluir)
+incluir e retirar do lado 1 (esquerda) tem que empurrar (usar for)
+
+type tdeque = record
+	vet:array [1..5] of char;
+	front, rear: integer;
+
+
+procedure create (var dq:tdeque);
+
+procedure destroy (var dq:tdeque);
+
+function isempity (dq:tdeque):boolean;
+
+function isfull (dq:tdeque):boolean;
+
+procedure inclui (var dq:tdeque; lado: integer; elem:char); 
+
+function retira (dq:tdeque; lado: integer):char
+
+
+
+var dq1:tdeque;
+
+create (dq1);
+inclui (dq1, 2, 'a');
+inclui (dq1, 2, 'b');
+inclui (dq1, 2, 'c');
+
+inclui (dq1, 1, 'd');
+
+inclui (dq1, 2, 'e');
+
+writeln (retira (dq1, 2);
+writeln (retira (dq1, 2);
+
+writeln (retira (dq1, 1);
+
+
+
+
+
+
+Exercicio 04    12/04/2016
+
+escreva e teste o código passado em aula    
+Crie e teste as seguintes rotinas:  rotina para incluir elemento no inicio da lista,   
+(lembre q a lista pode estar vazia) rotina para mostrar os elementos da lista,	
+				    rotina para incluir elemento no final da lista,
+				    rotina que retorna a quantidade de elementos da lista,
+				    rotina que retira um elemento do inicio da lista   (retornando o elemento retirado)
+				    rotina que retira um elemento do final da lista    (retornando o elemento retirado). 
+
+
+
+
+
+exercicio 05   19/04/2016
+
+             implementar e testar as rotinas da fila com alocação dinamica
+	     implementar e testar as rotinas da pilha com alocação dinamica
+
+exercício 06  24/05/2016
+
+	     exercícios do arquivo listas encadeadas.
+
+
+
+
+exercício 07   14/06/2016
+
+	    implementar uma agenda com nome e telefone como uma árvore binária ordenada
+	    que - inclua nome e fone;
+		- exclua a partir do nome;
+		- busque a partir do nome e retorne o telefone;
+		- liste toda a agenda em ordem alfabética.
+
+            Construa uma rotina que receba a raiz de uma árvore binária e retorne sua altura. 
+	    Lembrem-se: Se a árvore é vazia a altura é 0, se não a altura da árvore é equivalente
+			a altura da maior sub-árvore +1.      	       	
+
+
+
+
+
+
+
+
+		

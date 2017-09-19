@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<title> Título da Página</title>
+	</head>
+	<body>
+		<img src="coração.jpg" name="im1" width="200" border="solid"/>
+		<script>
+			var j = 1;
+			var i = 20;
+			function heart(){
+				document.im1.width += i * j;
+				if ((document.im1.width >= 240) || (document.im1.width <= 200)){
+					j *= -1;
+				}				
+			}
+			setInterval('heart()', 500);
+		</script>
+	</body>
+</html>

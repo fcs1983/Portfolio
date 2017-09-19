@@ -1,0 +1,93 @@
+.p1{
+	height: 300px;
+	width: 450px;
+	float: right;
+	font-size: 1.2em;
+	margin-right: 2px;
+	text-indent: 2em;
+}
+
+span{
+	color: fuchsia; 
+}
+#conteudo{
+	width: 900px;
+	border: solid 1.2px gray;
+	background-color: beige;
+	margin: 10px 5px;
+	padding: 10px;
+}
+
+h3{
+	color: DeepSkyBlue;
+	text-decoration: underline; 
+}
+
+.clear{
+	clear: both;
+}
+
+#img1{
+	float: left;
+	width: 430px;
+}
+
+.img2{
+	float: right;
+	width: 170px;
+}
+
+#autor{
+	margin-left: 485px;
+}
+
+table {
+	float: left;
+	margin: 3px;
+}
+
+td {
+	width: 120px;
+	border: 1px solid red;
+	border-collapse: collapse;
+	text-align: center;
+	padding: 10%;
+	background-color: khaki;
+}
+
+.pto{
+	color: fuchsia;
+}
+
+#pto1{
+	width: 40%;
+	float: left;
+}
+
+#pto2{
+	width: 40%;
+	float: right;
+}
+
+#mapa{
+	width: 350px;
+	margin-left: 25%;
+	margin-top: 25px;
+	border-style: groove;
+	border-width: thick;
+	border-color: indianred;
+}
+
+#pto3{
+	width: 40%;
+	float: left;
+}
+
+#pto4{
+	width: 40%;
+	float: right;
+}
+
+input{
+	padding: 5px;
+}

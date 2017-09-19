@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8" />
+		<title> Título da Página</title>
+	
+	<style>
+	* {margin:0; padding:0;}
+	#container {
+		margin:0 auto;           /* primeiro valor é top e botton, o segundo left and right*/
+		padding-top:5px; 
+		width: 800px; 
+		height:670px; 
+		background: #ff0000;
+		/*box-sizing:border-box;                     Pesquisar este comando */
+		/*-webkit-box-sizing:border-box;             Pesquisar este comando */
+	}
+	#header {
+		margin:0 auto; 
+		width:98%; 
+		height:95px; 
+		background:maroon;
+		padding:2px 
+	}
+	#mainnav {
+		margin:0 auto; 
+		width:98%; 
+		height: 40px;
+		background:tan; 
+		margin-top:10px; 
+		margin-bottom:5px;
+		padding:2px
+	}
+	#contents {
+		width:78%; 
+		height:68%; 
+		float:left;
+		margin-left:1%; 
+		margin-top:5px; 
+		margin-bottom:5px;
+		background: beige;
+		padding:2px
+	}
+	#menu {
+		width:18%;  
+		height:68%; 
+		float:right; 
+		margin-right:1%; 
+		margin-top:5px; 
+		margin-bottom:5px; 
+		background: beige;
+		padding:2px
+	}
+	#footer {
+		width:98%; 
+		height: 25px; 
+		clear:both;            /*para limpar a informacão de flutuação, se não colocado ele vai se encaixar na flutuação dos outros elementos */
+		margin:0 auto; 
+		background: gray; 
+		padding-top:10px;  
+	}
+
+	
+	</style>
+	</head>
+	<body>
+	<div id="container"> 
+       <div id="header">
+          Cabeçalho
+       </div> 
+       <div id="mainnav">
+          Menu Principal
+       </div>
+	   <div id="menu">
+         Menu Secundário
+      </div> 
+      <div id="contents">
+         Conteúdo
+      </div> 
+      <div id="footer"> 
+         Rodapé
+      </div> 
+  </div>
+
+	
+	</body>
+</html>	

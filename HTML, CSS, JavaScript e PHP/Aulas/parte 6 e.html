@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8" />
+		<title> Título da Página</title>
+		<style>
+			.flex-container {
+				width: 400px;
+				height: 250px;
+				background-color: skyblue;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-flex-direction:row; 
+				flex-direction: column-reverse;
+			} /* row/column/row-reverse/column-reverse; */
+			
+			.flex-item {
+				background-color: cornflowerblue;
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				padding:3px;
+				box-shadow:10px 10px 5px #888888;
+				border-radius: 10%;
+				opacity: 0.5;                            /*Alguns navegadores usam o opacity e outros o filter */
+				filter: alpha(opacity=50);               /*por isso coloca-se os dois, outro padrao de opacidade é o hsla */
+				/*background: hsla(120, 75%, 50%, 0.2);    com hsla o texto não acompanha a transparencia */
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<div class="flex-container">
+		<div class="flex-item">flex item 1</div>
+		<div class="flex-item">flex item 2</div>
+		<div class="flex-item">flex item 3</div>
+		</div>
+
+</div>
+
+	</body>
+</html>	

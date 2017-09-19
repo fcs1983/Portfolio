@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<title> Título da Página</title>
+		<script>
+			img = new Image();
+			img[0] = "mouse0.gif";
+			img[1] = "mouse1.gif";
+			img[2] = "mouse2.gif";
+			img[3] = "mouse3.gif";
+			img[4] = "mouse4.gif";
+			img[5] = "mouse5.gif";
+			img[6] = "mouse6.gif";
+			img[7] = "mouse7.gif";
+			img[8] = "mouse8.gif";	
+		</script>
+	</head>
+	<body>
+		<img src="" name="im1" width="300" border="solid"/>
+		</br>
+		</br>
+		<script>
+			var i = 0;
+			function rato(){
+				document.images[0].src = img[i];
+				i++;
+				if (i > 8)
+					i = 0;
+			}
+			setInterval('rato()', 500);
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<title> Título da Página</title>
+		<script language="javascript">
+			var hoje = new Date();
+			var data, dd, mm;
+			dd = hoje.getDate();
+			if (dd > 9){
+				data = dd;
+			}
+			else{
+				data = "0" + dd;
+			}
+			data += "/";
+			mm = hoje.getMonth();
+			mm++;
+			if (mm > 9){
+				data += mm;
+			}
+			else{
+				data += "0" + mm; 
+			}
+			data += "/";
+			data += hoje.getFullYear();	
+			console.log(data);
+			
+			br = new Date("Apr 22 1500");
+			semana = ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira"];
+			console.log(semana[br.getDay()]);
+			
+			na = new Date("Nov 16 1983");
+			console.log(semana[na.getDay()]);
+			
+			corr = new Date();
+			if (corr.getHours() )
+			//Bom dia começa as (00:01h) as (12:00h) 
+			//Bôa tarde começa as (12:01h) as (18:00h) 
+			//Bôa noite começa as (18:01h) até 00:00h.
+			
+			var n = Math.random( );
+			document.write( n + "<br />");
+			var n1 = Math.random( ) * 50;
+			document.write( n1 + "<br />");
+			var n2 = Math.round( Math.random( ) * 50); 
+			document.write( n2 + "<br />");
+
+			
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

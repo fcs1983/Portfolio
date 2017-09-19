@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<title> Título da Página</title>
+		
+	</head>
+	<body>
+		<p id="janela"></p>
+		<p id="tela"></p>
+		
+		<button onclick="janelinha();">Abrir</button>
+		<button onclick="escrever();">Escrever</button>
+		<button onclick="fechar();">Fechar</button>
+		<button onclick="redimensionar()">Redimensionar</button>
+		<script>
+			//window.setTimeout("alert('Olá!')", 3000);
+			//window.setInterval("console.log('...')", 1000);
+			console.log(window.location.href);
+			console.log(window.location.protocol);
+			console.log(window.history.lenght);
+			
+			var n=window.outerWidth;
+			janela.innerHTML = "Largura da janela: " + n;
+			document.getElementById("tela").innerHTML = "Largura da tela: " + screen.width;
+			
+			function janelinha(){
+				jan = window.open("", "jan", "width=400, height=200, top=300, left=200");
+				jan.focus();
+			}
+			
+			function escrever(){
+				jan.document.open();
+				jan.document.write("<p>Escrevendo...</p>");
+				jan.document.write("<button onclick='window.close();'>Fechar</button>")
+				jan.document.close();
+				//jan.opener.document.write("Janelão!");
+				jan.focus();
+			}
+			
+			function fechar(){
+				jan.close();
+			}
+			
+			function redimensionar(){
+				jan.resizeTo(200, 200);
+				jan.focus();
+			}
+		</script>	
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Calcular IMC</title>
+		
+		<script language="javascript">
+			
+			function carregar(){
+				calc.onclick=function (){
+					var p = 0, a = 0, imc = 0;
+					p = peso.value;
+					a = altura.value;
+					if (isNumber(p) && isNumber(a) && p > 0 && a > 0){
+						imc = p / (Math.pow(a, 2));
+						result.innerHTML = "IMC: " + imc.toFixed(1) + "  " + classificacao(imc);
+					}
+					else {
+						peso.value = "";
+						altura.value = "";
+						result.innerHTML = "";
+						alert("Valores inválidos, por favor digite novamente.");
+					}
+				}	
+			}
+			
+			function isNumber(n) {
+				return !isNaN(parseFloat(n)) && isFinite(n);
+			}
+			
+			function classificacao(imc){
+				switch(true){
+					case(imc < 16):
+						return "Baixo peso severo";
+					case(imc >= 16 && imc < 17):
+						return "Baixo peso moderado";
+					case(imc >=17 && imc < 18.5):
+						return "Baixo peso leve";
+					case(imc >= 18,5 && imc < 25):
+						return "Peso ideal";
+					case(imc >= 25 && imc < 30):
+						return "Sobrepeso";
+					case(imc >= 30 && imc < 35):
+						return "Obesidade Moderada";
+					case(imc >= 35 && imc < 40):
+						return "Obesidade Alta";
+					case(imc >= 40 && imc < 50):
+						return "Obesidade mórbida";
+					case(imc >= 50):
+						return "Super obesidade";
+				}
+			}
+		</script>
+		<style>
+			fieldset{
+				height: 200px;
+				width: 500px;
+			}
+		</style>
+	</head>
+	<body onload="carregar( );">
+		<fieldset>
+			<h3>Calcular IMC</h3>
+			<label for="peso">Peso: </label>
+			<input type="text" id="peso" size="10">
+			<label for="altura">Altura:	</label>
+			<input type="text" id="altura" size="10">
+			<input type="button" id="calc" value="Calcular.">
+			<h1 id="result"></h1>
+		</fieldset>
+	</body>
+</html>
