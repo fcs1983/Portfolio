@@ -1,0 +1,9 @@
+E:\C#\Projetos\wfaClasse\wfaClasse\bin\Debug\wfaClasse.exe.config
+E:\C#\Projetos\wfaClasse\wfaClasse\bin\Debug\wfaClasse.exe
+E:\C#\Projetos\wfaClasse\wfaClasse\bin\Debug\wfaClasse.pdb
+E:\C#\Projetos\wfaClasse\wfaClasse\obj\Debug\wfaClasse.csprojResolveAssemblyReference.cache
+E:\C#\Projetos\wfaClasse\wfaClasse\obj\Debug\wfaClasse.frmMercadoria.resources
+E:\C#\Projetos\wfaClasse\wfaClasse\obj\Debug\wfaClasse.Properties.Resources.resources
+E:\C#\Projetos\wfaClasse\wfaClasse\obj\Debug\wfaClasse.csproj.GenerateResource.Cache
+E:\C#\Projetos\wfaClasse\wfaClasse\obj\Debug\wfaClasse.exe
+E:\C#\Projetos\wfaClasse\wfaClasse\obj\Debug\wfaClasse.pdb
